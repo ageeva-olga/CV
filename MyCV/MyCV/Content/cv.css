@@ -23,6 +23,8 @@ body{
 .content {
     width: 500px;
     padding: 5px; /* Поля вокруг текста */
+
+    background-color: grey;
 }
     
 
