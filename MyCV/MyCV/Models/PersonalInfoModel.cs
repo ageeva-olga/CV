@@ -7,11 +7,25 @@ namespace MyCV.Models
 {
     public class PersonalInfoModel
     {
-        public string Name => "Olga";
-        public string Surname => "Ageeva";
-        public string Phone => "+79200513315";
-        public string Email => "olga.ageeva.999@mail.ru";
+
+
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
 
         public string FullName => $"{Name} {Surname}";
+
+        public PersonalInfoModel()
+        {
+        }
+        
+        public PersonalInfoModel(string name, string surname, string phone, string email)
+        {
+            Name = name;
+            Surname = surname;
+            Phone = phone;
+            Email = email;
+        }
     }
 }

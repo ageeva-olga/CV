@@ -9,11 +9,23 @@ namespace MyCV.Controllers
 {
     public class HomeController : Controller
     {
+        public static PersonalInfoModel Model = new PersonalInfoModel("Olga", "Ageeva", "+79200513315", "olga.ageeva.999@mail.ru");
         public ActionResult Index()
         {
-            var model = new PersonalInfoModel();
-            return View(model);
+            return View(Model);
         }
 
+        [HttpGet]
+        public ActionResult EditPersonalInfo()
+        { 
+            return View(Model);
+        }
+
+        [HttpPost]
+        public ActionResult EditPersonalInfo(PersonalInfoModel model)
+        {
+            Model = model;
+            return RedirectToAction("/");
+        }
     }
 }

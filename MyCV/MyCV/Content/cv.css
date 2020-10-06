@@ -1,3 +1,7 @@
+html, body, .container {
+    height:100%;
+}
+
 body{
     margin: 0;
 
@@ -24,7 +28,7 @@ body{
     width: 500px;
     padding: 5px; /* Поля вокруг текста */
 
-    background-color: grey;
+    background-color: white;
 }
     
 

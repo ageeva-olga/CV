@@ -1,0 +1,32 @@
+﻿@model MyCV.Models.PersonalInfoModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<main class="content">
+    <div class="form">
+        @using (Html.BeginForm("EditPersonalInfo", "Home", FormMethod.Post))
+        {
+            <h4 class="title info">Personal Info:</h4>
+            <div>
+                <label>Name</label>
+                <input id="Name" name="Name" type="text" value="@Model.Name">
+            </div>
+            <div>
+                <label>Surname</label>
+                @Html.TextBoxFor(m => m.Surname)
+            </div>
+            <div>
+                <label>Phone</label>
+                @Html.TextBoxFor(m => m.Phone)
+            </div>
+            <div>
+                <label>e-mail</label>
+                @Html.TextBoxFor(m => m.Email)
+            </div>
+            <div>
+                <input type="submit" value="Отправить" />
+            </div>
+        }
+        </div>
+</main>
