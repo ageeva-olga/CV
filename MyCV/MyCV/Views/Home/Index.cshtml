@@ -1,16 +1,17 @@
-﻿@model MyCV.Models.PersonalInfoModel
+﻿@model MyCV.Models.FrontPageModel
 @{
     ViewBag.Title = "MyCV";
 }
 
 <aside class="sidebar">
-    <h1 class="title">@Model.FullName</h1>
+    <a href="/Home/EditPersonalInfo">Редактировать</a>
+    <h1 class="title">@Model.PersonalInfo.FullName</h1>
     <h4 class="title info">Personal Info:</h4>
 
     <h5 class="title info">Phone:</h5>
-    <p>@Model.Phone</p>
+    <p>@Model.PersonalInfo.Phone</p>
     <h5 class="title info">e-mail:</h5>
-    <p>@Model.Email</p>
+    <p>@Model.PersonalInfo.Email</p>
 </aside>
 
 <main class="content">
@@ -19,11 +20,15 @@
         <div class="educaton">
             <p>
                 <table>
-                    <tr>
-                        <td>2006-2015</td>
-                        <td>Общеобразовательная школа №103</td>
-                    </tr>
-                    <tr>
+                    @foreach (var education in Model.EducationBlock.EducationList)
+                    {
+                        <tr>
+
+                            <td>@education.Begin.Year-@education.End.Year</td>
+                            <td>@education.SchoolName</td>
+                        </tr>
+                    }
+                    @*<tr>
                         <td>2015-2017</td>
                         <td>НТЛ №38</td>
                     </tr>
@@ -34,7 +39,7 @@
                             Институт Информационных технологий, математики и механики,
                             Факультет Математика и компьютерные науки
                         </td>
-                    </tr>
+                    </tr>*@
                 </table>
             </p>
         </div>
