@@ -19,9 +19,16 @@ namespace MyCV.Controllers
                 {
                     new EducationModel(new DateTime(2006, 1, 1), new DateTime(2015, 1, 1), "Общеобразовательная школа №103"),
                     new EducationModel(new DateTime(2015, 1, 1), new DateTime(2017, 1, 1), "НТЛ №38"),
-                    new EducationModel(new DateTime(2017, 1, 1), new DateTime(2020, 1, 1), "ННГУ им. Лобачевского, Институт Информационных технологий, математики и механики, Факультет Математика и компьютерные науки")
+                    new EducationModel(new DateTime(2017, 1, 1), new DateTime(2021, 1, 1), "ННГУ им. Лобачевского, Институт Информационных технологий, математики и механики, Факультет Математика и компьютерные науки")
                 }
-            }
+            },
+           WorkExperienceBlock = new List<WorkExperienceListModel>()
+           {
+               WorkExperienceList = new List<WorkExperienceModel>()
+               {
+                   new WorkExperienceModel(new DateTime(2010, 1, 1), new DateTime(2011, 1, 1), "BastHouse","Продавец котят")
+               }
+           }
         };
         public ActionResult Index()
         {

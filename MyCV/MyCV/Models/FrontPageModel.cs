@@ -9,5 +9,6 @@ namespace MyCV.Models
     {
         public PersonalInfoModel PersonalInfo { get; set; }
         public EducationListModel EducationBlock { get; set; }
+        public WorkExperienceListModel WorkExperienceBlock { get; set; }
     }
 }

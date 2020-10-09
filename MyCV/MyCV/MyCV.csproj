@@ -156,6 +156,8 @@
     <Compile Include="Models\EducationModel.cs" />
     <Compile Include="Models\FrontPageModel.cs" />
     <Compile Include="Models\PersonalInfoModel.cs" />
+    <Compile Include="Models\WorkExperienceListModel.cs" />
+    <Compile Include="Models\WorkExperienceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

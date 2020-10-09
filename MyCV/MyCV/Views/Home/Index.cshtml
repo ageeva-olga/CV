@@ -28,18 +28,6 @@
                             <td>@education.SchoolName</td>
                         </tr>
                     }
-                    @*<tr>
-                        <td>2015-2017</td>
-                        <td>НТЛ №38</td>
-                    </tr>
-                    <tr>
-                        <td>2017-настоящее время</td>
-                        <td>
-                            ННГУ им. Лобачевского,
-                            Институт Информационных технологий, математики и механики,
-                            Факультет Математика и компьютерные науки
-                        </td>
-                    </tr>*@
                 </table>
             </p>
         </div>
@@ -50,22 +38,15 @@
         <div class="workExperience">
             <p>
                 <table>
-                    <tr>
-                        <td>2006-2015</td>
-                        <td>Общеобразовательная школа №103</td>
-                    </tr>
-                    <tr>
-                        <td>2015-2017</td>
-                        <td>НТЛ №38</td>
-                    </tr>
-                    <tr>
-                        <td>2017-настоящее время</td>
-                        <td>
-                            ННГУ им. Лобачевского,
-                            Институт Информационных технологий, математики и механики,
-                            Факультет Математика и компьютерные науки
-                        </td>
-                    </tr>
+                    @foreach (var workExperience in Model.WorkExperienceBlock.WorkExperienceList)
+                    {
+                        <tr>
+
+                            <td>@workExperience.Begin.Year-@workExperience.End.Year</td>
+                            <td>@workExperience.WorkName</td>
+                            <td>@workExperience.PositionName</td>
+                        </tr>
+                    }
                 </table>
             </p>
         </div>
