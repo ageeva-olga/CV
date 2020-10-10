@@ -22,11 +22,13 @@ namespace MyCV.Controllers
                     new EducationModel(new DateTime(2017, 1, 1), new DateTime(2021, 1, 1), "ННГУ им. Лобачевского, Институт Информационных технологий, математики и механики, Факультет Математика и компьютерные науки")
                 }
             },
-           WorkExperienceBlock = new List<WorkExperienceListModel>()
+           WorkExperienceBlock = new WorkExperienceListModel()
            {
+
                WorkExperienceList = new List<WorkExperienceModel>()
                {
-                   new WorkExperienceModel(new DateTime(2010, 1, 1), new DateTime(2011, 1, 1), "BastHouse","Продавец котят")
+                   new WorkExperienceModel(new DateTime(2010, 1, 1), new DateTime(2011, 1, 1), "BastHouse","Продавец котят"),
+                   new WorkExperienceModel(new DateTime(2020, 03, 20), new DateTime(2020, 03, 28), "СШОР по СП и КС","Тренер-берейтор")
                }
            }
         };
