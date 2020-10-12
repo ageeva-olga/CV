@@ -1,0 +1,13 @@
+﻿@model MyCV.Models.EducationListModel
+<table class="table table-striped">
+    @foreach (var education in Model.EducationList)
+    {
+        <tr>
+
+            <td>@education.Begin.Year-@education.End.Year</td>
+            <td>@education.SchoolName</td>
+            <td><div class="btn btn-danger">X</div></td>
+        </tr>
+    }
+</table>
+

@@ -4,51 +4,50 @@
 }
 
 <aside class="sidebar">
-    <a href="/Home/EditPersonalInfo">Редактировать</a>
-    <h1 class="title">@Model.PersonalInfo.FullName</h1>
-    <h4 class="title info">Personal Info:</h4>
+    @if (ViewBag.Mode == MyCV.Models.PageMode.View)
+    {
+        @Html.Partial("_ViewPersonalInfo", Model.PersonalInfo)
+    }
+    else
+    {
+        @Html.Partial("_EditPersonalInfo", Model.PersonalInfo)
+    }
 
-    <h5 class="title info">Phone:</h5>
-    <p>@Model.PersonalInfo.Phone</p>
-    <h5 class="title info">e-mail:</h5>
-    <p>@Model.PersonalInfo.Email</p>
 </aside>
 
 <main class="content">
     <fieldset>
-        <legend>Education</legend>
-        <div class="educaton">
-            <p>
-                <table class="table">
-                    @foreach (var education in Model.EducationBlock.EducationList)
-                    {
-                        <tr>
-
-                            <td>@education.Begin.Year-@education.End.Year</td>
-                            <td>@education.SchoolName</td>
-                        </tr>
-                    }
-                </table>
-            </p>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3><b>Education</b></h3>
+            </div>
+            @if (ViewBag.Mode == MyCV.Models.PageMode.View)
+            {
+                @Html.Partial("_ViewEducation", Model.EducationBlock)
+            }
+            else
+            {
+                @Html.Partial("_EditEducation", Model.EducationBlock)
+            }
         </div>
     </fieldset>
 
     <fieldset>
-        <legend>Work Experience</legend>
-        <div class="workExperience">
-            <p>
-                <table class="table">
-                    @foreach (var workExperience in Model.WorkExperienceBlock.WorkExperienceList)
-                    {
-                        <tr>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3><b>Work Experience</b></h3>
+            </div>
+            <table class="table table-striped">
+                @foreach (var workExperience in Model.WorkExperienceBlock.WorkExperienceList)
+                {
+                    <tr>
 
-                            <td>@workExperience.Begin.Year-@workExperience.End.Year</td>
-                            <td>@workExperience.WorkName</td>
-                            <td>@workExperience.PositionName</td>
-                        </tr>
-                    }
-                </table>
-            </p>
+                        <td>@workExperience.Begin.Year-@workExperience.End.Year</td>
+                        <td>@workExperience.WorkName</td>
+                        <td>@workExperience.PositionName</td>
+                    </tr>
+                }
+            </table>
         </div>
     </fieldset>
 </main>

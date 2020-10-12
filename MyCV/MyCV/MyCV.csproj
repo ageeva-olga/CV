@@ -155,6 +155,7 @@
     <Compile Include="Models\EducationListModel.cs" />
     <Compile Include="Models\EducationModel.cs" />
     <Compile Include="Models\FrontPageModel.cs" />
+    <Compile Include="Models\PageMode.cs" />
     <Compile Include="Models\PersonalInfoModel.cs" />
     <Compile Include="Models\WorkExperienceListModel.cs" />
     <Compile Include="Models\WorkExperienceModel.cs" />
@@ -197,7 +198,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\EditPersonalInfo.cshtml" />
+    <Content Include="Views\Home\_EditPersonalInfo.cshtml" />
+    <Content Include="Views\Home\_ViewPersonalInfo.cshtml" />
+    <Content Include="Views\Home\_ViewEducation.cshtml" />
+    <Content Include="Views\Home\_EditEducation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

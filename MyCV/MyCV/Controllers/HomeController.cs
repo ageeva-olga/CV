@@ -12,6 +12,7 @@ namespace MyCV.Controllers
         //public static PersonalInfoModel Model = new PersonalInfoModel("Olga", "Ageeva", "+79200513315", "olga.ageeva.999@mail.ru");
         public static FrontPageModel Model = new FrontPageModel()
         {
+            //Mode = PageMode.View,
             PersonalInfo = new PersonalInfoModel("Olga", "Ageeva", "+79200513315", "olga.ageeva.999@mail.ru"),
             EducationBlock = new EducationListModel()
             {
@@ -22,25 +23,30 @@ namespace MyCV.Controllers
                     new EducationModel(new DateTime(2017, 1, 1), new DateTime(2021, 1, 1), "ННГУ им. Лобачевского, Институт Информационных технологий, математики и механики, Факультет Математика и компьютерные науки")
                 }
             },
-           WorkExperienceBlock = new WorkExperienceListModel()
-           {
+            WorkExperienceBlock = new WorkExperienceListModel()
+            {
 
-               WorkExperienceList = new List<WorkExperienceModel>()
+                WorkExperienceList = new List<WorkExperienceModel>()
                {
                    new WorkExperienceModel(new DateTime(2010, 1, 1), new DateTime(2011, 1, 1), "BastHouse","Продавец котят"),
                    new WorkExperienceModel(new DateTime(2020, 03, 20), new DateTime(2020, 03, 28), "СШОР по СП и КС","Тренер-берейтор")
                }
-           }
+            }
         };
-        public ActionResult Index()
+
+        public HomeController()
         {
-            return View(Model);
+            ViewBag.Mode = PageMode.View;
         }
 
+
         [HttpGet]
-        public ActionResult EditPersonalInfo()
+        public ActionResult Index(string mode)
         {
-            return View(Model);
+
+            ViewBag.Mode = string.IsNullOrEmpty(mode) ? PageMode.View : PageMode.Edit;
+
+            return View("Index", Model);
         }
 
         [HttpPost]
