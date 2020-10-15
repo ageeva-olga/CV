@@ -4,15 +4,14 @@
 }
 
 <aside class="sidebar">
-    @if (ViewBag.Mode == MyCV.Models.PageMode.View)
-    {
-        @Html.Partial("_ViewPersonalInfo", Model.PersonalInfo)
-    }
-    else
+    @if (ViewBag.Mode == MyCV.Models.PageMode.EditPersonalInfo)
     {
         @Html.Partial("_EditPersonalInfo", Model.PersonalInfo)
     }
-
+    else
+    {
+        @Html.Partial("_ViewPersonalInfo", Model.PersonalInfo)
+    }
 </aside>
 
 <main class="content">
@@ -20,14 +19,15 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3><b>Education</b></h3>
+                <a href="/?mode=EditEducation">Редактировать</a>
             </div>
-            @if (ViewBag.Mode == MyCV.Models.PageMode.View)
+            @if (ViewBag.Mode == MyCV.Models.PageMode.EditEducation)
             {
-                @Html.Partial("_ViewEducation", Model.EducationBlock)
+                @Html.Partial("_EditEducation", Model.EducationBlock)
             }
             else
             {
-                @Html.Partial("_EditEducation", Model.EducationBlock)
+                @Html.Partial("_ViewEducation", Model.EducationBlock)
             }
         </div>
     </fieldset>

@@ -18,9 +18,9 @@ namespace MyCV.Controllers
             {
                 EducationList = new List<EducationModel>()
                 {
-                    new EducationModel(new DateTime(2006, 1, 1), new DateTime(2015, 1, 1), "Общеобразовательная школа №103"),
-                    new EducationModel(new DateTime(2015, 1, 1), new DateTime(2017, 1, 1), "НТЛ №38"),
-                    new EducationModel(new DateTime(2017, 1, 1), new DateTime(2021, 1, 1), "ННГУ им. Лобачевского, Институт Информационных технологий, математики и механики, Факультет Математика и компьютерные науки")
+                    new EducationModel("2006", "2015", "Общеобразовательная школа №103"),
+                    new EducationModel("2015", "2017", "НТЛ №38"),
+                    new EducationModel("2017", "2020", "ННГУ им. Лобачевского, Институт Информационных технологий, математики и механики, Факультет Математика и компьютерные науки")
                 }
             },
             WorkExperienceBlock = new WorkExperienceListModel()
@@ -41,10 +41,31 @@ namespace MyCV.Controllers
 
 
         [HttpGet]
-        public ActionResult Index(string mode)
+        public ActionResult Index(PageMode? mode)
         {
 
-            ViewBag.Mode = string.IsNullOrEmpty(mode) ? PageMode.View : PageMode.Edit;
+            ViewBag.Mode = mode ?? PageMode.View;
+
+            return View("Index", Model);
+        }
+
+        [HttpGet]
+        public ActionResult DeleteEducation(Guid id)
+        {
+            var removedElement = Model.EducationBlock.EducationList.First(item => item.Id == id);
+            Model.EducationBlock.EducationList.Remove(removedElement);
+
+            ViewBag.Mode = PageMode.EditEducation;
+
+            return RedirectToAction("/", new { mode = "EditEducation" });
+        }
+
+        [HttpPost]
+        public ActionResult AddEducation(EducationModel model)
+        {
+            Model.EducationBlock.EducationList.Add(model);
+
+            ViewBag.Mode = PageMode.EditEducation;
 
             return View("Index", Model);
         }

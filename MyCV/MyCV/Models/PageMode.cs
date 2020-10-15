@@ -8,6 +8,8 @@ namespace MyCV.Models
     public enum PageMode
     {
         View = 1, 
-        Edit = 2
+        EditPersonalInfo = 2,
+        EditEducation = 3
+
     }
 }

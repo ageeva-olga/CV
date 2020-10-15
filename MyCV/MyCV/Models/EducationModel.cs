@@ -8,15 +8,22 @@ namespace MyCV.Models
     public class EducationModel
     {
 
-        public DateTime Begin { get; set; }
-        public DateTime End { get; set; }
+        public string Begin { get; set; }
+        public string End { get; set; }
         public string SchoolName { get; set; }
+        public Guid Id { get; set; }
 
-        public EducationModel(DateTime begin, DateTime end, string schoolName)
+        public EducationModel(string begin, string end, string schoolName)
+            :this()
         {
             Begin = begin;
             End = end;
             SchoolName = schoolName;
+        }
+
+        public EducationModel()
+        {
+            Id = Guid.NewGuid();
         }
     }
 }

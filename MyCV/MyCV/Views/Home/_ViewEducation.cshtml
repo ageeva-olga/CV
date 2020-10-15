@@ -2,10 +2,10 @@
 <table class="table table-striped">
     @foreach (var education in Model.EducationList)
     {
-        <tr>
+    <tr>
 
-            <td>@education.Begin.Year-@education.End.Year</td>
-            <td>@education.SchoolName</td>
-        </tr>
+        <td>@education.Begin-@education.End</td>
+        <td>@education.SchoolName</td>
+    </tr>
     }
 </table>
