@@ -1,0 +1,12 @@
+﻿@model MyCV.Models.WorkExperienceListModel
+<table class="table table-striped">
+    @foreach (var workExperience in Model.WorkExperienceList)
+    {
+    <tr>
+
+        <td>@workExperience.Begin.Year-@workExperience.End.Year</td>
+        <td>@workExperience.WorkName</td>
+        <td>@workExperience.PositionName</td>
+    </tr>
+    }
+</table>

@@ -36,18 +36,16 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3><b>Work Experience</b></h3>
+                <a href="/?mode=EditWorkExperience">Редактировать</a>
             </div>
-            <table class="table table-striped">
-                @foreach (var workExperience in Model.WorkExperienceBlock.WorkExperienceList)
-                {
-                    <tr>
-
-                        <td>@workExperience.Begin.Year-@workExperience.End.Year</td>
-                        <td>@workExperience.WorkName</td>
-                        <td>@workExperience.PositionName</td>
-                    </tr>
-                }
-            </table>
+            @if (ViewBag.Mode == MyCV.Models.PageMode.EditWorkExperience)
+            {
+                @Html.Partial("_EditWorkExperience", Model.WorkExperienceBlock)
+            }
+            else
+            {
+                @Html.Partial("_ViewWorkExperience", Model.WorkExperienceBlock)
+            }
         </div>
     </fieldset>
 </main>

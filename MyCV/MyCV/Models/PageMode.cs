@@ -9,7 +9,8 @@ namespace MyCV.Models
     {
         View = 1, 
         EditPersonalInfo = 2,
-        EditEducation = 3
+        EditEducation = 3,
+        EditWorkExperience = 4
 
     }
 }

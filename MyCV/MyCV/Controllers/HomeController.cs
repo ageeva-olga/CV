@@ -70,6 +70,27 @@ namespace MyCV.Controllers
             return View("Index", Model);
         }
 
+        [HttpGet]
+        public ActionResult DeleteWorkExperience(Guid id)
+        {
+            var removedElement = Model.WorkExperienceBlock.WorkExperienceList.First(item => item.Id == id);
+            Model.WorkExperienceBlock.WorkExperienceList.Remove(removedElement);
+
+            ViewBag.Mode = PageMode.EditWorkExperience;
+
+            return RedirectToAction("/", new { mode = "EditWorkExperience" });
+        }
+
+        [HttpPost]
+        public ActionResult AddWorkExperience(WorkExperienceModel model)
+        {
+            Model.WorkExperienceBlock.WorkExperienceList.Add(model);
+
+            ViewBag.Mode = PageMode.EditWorkExperience;
+
+            return View("Index", Model);
+        }
+
         [HttpPost]
         public ActionResult EditPersonalInfo(PersonalInfoModel model)
         {

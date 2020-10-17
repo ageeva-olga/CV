@@ -202,6 +202,8 @@
     <Content Include="Views\Home\_ViewPersonalInfo.cshtml" />
     <Content Include="Views\Home\_ViewEducation.cshtml" />
     <Content Include="Views\Home\_EditEducation.cshtml" />
+    <Content Include="Views\Home\_ViewWorkExperience.cshtml" />
+    <Content Include="Views\Home\_EditWorkExperience.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
