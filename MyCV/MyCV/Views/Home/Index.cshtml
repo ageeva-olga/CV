@@ -19,14 +19,15 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3><b>Education</b></h3>
-                <a href="/?mode=EditEducation">Редактировать</a>
             </div>
             @if (ViewBag.Mode == MyCV.Models.PageMode.EditEducation)
             {
+                <a href="/?mode=Index">Завершить редактирование</a>
                 @Html.Partial("_EditEducation", Model.EducationBlock)
             }
             else
             {
+                <a href="/?mode=EditEducation">Редактировать</a>
                 @Html.Partial("_ViewEducation", Model.EducationBlock)
             }
         </div>
@@ -36,14 +37,15 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3><b>Work Experience</b></h3>
-                <a href="/?mode=EditWorkExperience">Редактировать</a>
             </div>
             @if (ViewBag.Mode == MyCV.Models.PageMode.EditWorkExperience)
             {
+                <a href="/?mode=Index">Завершить редактирование</a>
                 @Html.Partial("_EditWorkExperience", Model.WorkExperienceBlock)
             }
             else
             {
+                <a href="/?mode=EditWorkExperience">Редактировать</a>
                 @Html.Partial("_ViewWorkExperience", Model.WorkExperienceBlock)
             }
         </div>

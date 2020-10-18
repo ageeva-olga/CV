@@ -73,8 +73,8 @@ namespace MyCV.Controllers
         [HttpGet]
         public ActionResult DeleteWorkExperience(Guid id)
         {
-            var removedElement = Model.WorkExperienceBlock.WorkExperienceList.First(item => item.Id == id);
-            Model.WorkExperienceBlock.WorkExperienceList.Remove(removedElement);
+            var removeElement = Model.WorkExperienceBlock.WorkExperienceList.First(item => item.Id == id);
+            Model.WorkExperienceBlock.WorkExperienceList.Remove(removeElement);
 
             ViewBag.Mode = PageMode.EditWorkExperience;
 
