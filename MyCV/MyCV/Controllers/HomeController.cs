@@ -28,8 +28,8 @@ namespace MyCV.Controllers
 
                 WorkExperienceList = new List<WorkExperienceModel>()
                {
-                   new WorkExperienceModel(new DateTime(2010, 1, 1), new DateTime(2011, 1, 1), "BastHouse","Продавец котят"),
-                   new WorkExperienceModel(new DateTime(2020, 03, 20), new DateTime(2020, 03, 28), "СШОР по СП и КС","Тренер-берейтор")
+                   new WorkExperienceModel("2010", "2011", "BastHouse","Продавец котят"),
+                   new WorkExperienceModel("2020", "2020", "СШОР по СП и КС","Тренер-берейтор")
                }
             }
         };
