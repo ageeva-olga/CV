@@ -2,11 +2,11 @@
 <table class="table table-striped">
     @foreach (var workExperience in Model.WorkExperienceList)
     {
-    <tr>
+        <tr>
 
-        <td>@workExperience.Begin-@workExperience.End</td>
-        <td>@workExperience.WorkName</td>
-        <td>@workExperience.PositionName</td>
-    </tr>
+            <td>@workExperience.Begin-@workExperience.End</td>
+            <td>@workExperience.WorkName</td>
+            <td>@workExperience.PositionName</td>
+        </tr>
     }
 </table>

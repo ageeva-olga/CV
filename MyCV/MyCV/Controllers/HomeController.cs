@@ -30,7 +30,8 @@ namespace MyCV.Controllers
                {
                    new WorkExperienceModel("2010", "2011", "BastHouse","Продавец котят"),
                    new WorkExperienceModel("2020", "2020", "СШОР по СП и КС","Тренер-берейтор")
-               }
+               },
+                NewWorkExpirience = new WorkExperienceModel()
             }
         };
 
@@ -45,7 +46,8 @@ namespace MyCV.Controllers
         {
 
             ViewBag.Mode = mode ?? PageMode.View;
-
+            ModelState.Clear();
+            Model.WorkExperienceBlock.NewWorkExpirience = new WorkExperienceModel();
             return View("Index", Model);
         }
 
@@ -84,8 +86,11 @@ namespace MyCV.Controllers
         [HttpPost]
         public ActionResult AddWorkExperience(WorkExperienceModel model)
         {
-            Model.WorkExperienceBlock.WorkExperienceList.Add(model);
-
+            if (ModelState.IsValid)
+            {
+                Model.WorkExperienceBlock.WorkExperienceList.Add(model);
+            }
+            Model.WorkExperienceBlock.NewWorkExpirience = model;
             ViewBag.Mode = PageMode.EditWorkExperience;
 
             return View("Index", Model);

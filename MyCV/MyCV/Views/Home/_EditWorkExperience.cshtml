@@ -11,15 +11,9 @@
                 <td><a href="/Home/DeleteWorkExperience?Id=@workExperience.Id" class="btn btn-danger">X</a></td>
             </tr>
         }
-            <tr>
-                <td>
-                    <input type="text" name="Begin" class="form-control" placeholder="Год начала"> -
-                    <input type="text" name="End" class="form-control" placeholder="Год окончания">
-                </td>
-                <td><input type="text" name="WorkName" class="form-control" placeholder="Имя"></td>
-                <td><input type="text" name="PositionName" class="form-control" placeholder="Имя"></td>
-                <td><input type="submit" class="btn btn-success" value="Add" /></td>
-            </tr>
+
+        @Html.Partial("_EditWorkExpirienceAdd", Model.NewWorkExpirience)
+
     </table>
 </form>
 

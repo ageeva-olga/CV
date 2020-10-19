@@ -204,6 +204,7 @@
     <Content Include="Views\Home\_EditEducation.cshtml" />
     <Content Include="Views\Home\_ViewWorkExperience.cshtml" />
     <Content Include="Views\Home\_EditWorkExperience.cshtml" />
+    <Content Include="Views\Home\_EditWorkExpirienceAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
