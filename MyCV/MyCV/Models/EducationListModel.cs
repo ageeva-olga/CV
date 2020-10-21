@@ -8,5 +8,6 @@ namespace MyCV.Models
     public class EducationListModel
     {
         public List<EducationModel> EducationList { get; set; }
+        public EducationModel NewEducation { get; set; }
     }
 }

@@ -21,7 +21,8 @@ namespace MyCV.Controllers
                     new EducationModel("2006", "2015", "Общеобразовательная школа №103"),
                     new EducationModel("2015", "2017", "НТЛ №38"),
                     new EducationModel("2017", "2020", "ННГУ им. Лобачевского, Институт Информационных технологий, математики и механики, Факультет Математика и компьютерные науки")
-                }
+                },
+                NewEducation = new EducationModel()
             },
             WorkExperienceBlock = new WorkExperienceListModel()
             {
@@ -65,6 +66,11 @@ namespace MyCV.Controllers
         [HttpPost]
         public ActionResult AddEducation(EducationModel model)
         {
+            if (ModelState.IsValid)
+            {
+                Model.EducationBlock.EducationList.Add(model);
+            }
+            Model.EducationBlock.NewEducation = model;
             Model.EducationBlock.EducationList.Add(model);
 
             ViewBag.Mode = PageMode.EditEducation;
