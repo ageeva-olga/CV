@@ -1,4 +1,5 @@
-﻿using MyCV.Models;
+﻿using MyCV.DAL;
+using MyCV.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,10 +46,13 @@ namespace MyCV.Controllers
         [HttpGet]
         public ActionResult Index(PageMode? mode)
         {
+            //var repo = new ProfileInfoRepository();
+            //repo.GetProfileInfo();
 
             ViewBag.Mode = mode ?? PageMode.View;
             ModelState.Clear();
             Model.WorkExperienceBlock.NewWorkExpirience = new WorkExperienceModel();
+            Model.EducationBlock.NewEducation = new EducationModel();
             return View("Index", Model);
         }
 
