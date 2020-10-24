@@ -8,14 +8,15 @@ namespace MyCV.Models
 {
     public class WorkExperienceModel
     {
-        [Required]
-        [Range(0, int.MaxValue, ErrorMessage = "Ожидается число")]
+        [Required(ErrorMessage = "*")]
+        [Range(0, int.MaxValue, ErrorMessage = "Insert the number!")]
         public string Begin { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "*")]
+        [Range(0, int.MaxValue, ErrorMessage = "Insert the number!")]
         public string End { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "*")]
         public string WorkName { get; set; }
 
         [Required(ErrorMessage ="*")]

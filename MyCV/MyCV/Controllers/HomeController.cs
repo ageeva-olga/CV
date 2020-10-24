@@ -75,7 +75,6 @@ namespace MyCV.Controllers
                 Model.EducationBlock.EducationList.Add(model);
             }
             Model.EducationBlock.NewEducation = model;
-            Model.EducationBlock.EducationList.Add(model);
 
             ViewBag.Mode = PageMode.EditEducation;
 

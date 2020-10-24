@@ -1,8 +1,9 @@
 ﻿@model MyCV.Models.WorkExperienceModel
 <tr>
     <td>
+        @Html.ValidationMessage("Begin", "", new { @class = "text-danger" })
         <input type="text" name="Begin" class="form-control" placeholder="Год начала" value="@Model.Begin">
-        @Html.ValidationMessage("Begin", "", new { @class = "text-danger" })-
+        -
         <input type="text" name="End" class="form-control" placeholder="Год окончания" value="@Model.End">
         @Html.ValidationMessage("End", "", new { @class = "text-danger" })
     </td>

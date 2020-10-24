@@ -8,17 +8,17 @@ namespace MyCV.Models
 {
     public class EducationModel
     {
-        [Required]
-        [Range(0, int.MaxValue, ErrorMessage = "Ожидается число")]
+        [Required(ErrorMessage = "*")]
+        [Range(0, int.MaxValue, ErrorMessage = "Insert the number!")]
         public string Begin { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "*")]
+        [Range(0, int.MaxValue, ErrorMessage = "Insert the number!")]
         public string End { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "*")]
         public string SchoolName { get; set; }
 
-        [Required]
         public Guid Id { get; set; }
 
         public EducationModel(string begin, string end, string schoolName)
