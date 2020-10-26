@@ -9,11 +9,11 @@ namespace MyCV.Models
     public class EducationModel
     {
         [Required(ErrorMessage = "*")]
-        [Range(0, int.MaxValue, ErrorMessage = "Insert the number!")]
+        [Range(0, int.MaxValue, ErrorMessage = Consts.NumberRequired)]
         public string Begin { get; set; }
 
         [Required(ErrorMessage = "*")]
-        [Range(0, int.MaxValue, ErrorMessage = "Insert the number!")]
+        [Range(0, int.MaxValue, ErrorMessage = Consts.NumberRequired)]
         public string End { get; set; }
 
         [Required(ErrorMessage = "*")]
