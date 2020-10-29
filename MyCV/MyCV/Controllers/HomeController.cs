@@ -10,10 +10,8 @@ namespace MyCV.Controllers
 {
     public class HomeController : Controller
     {
-        //public static PersonalInfoModel Model = new PersonalInfoModel("Olga", "Ageeva", "+79200513315", "olga.ageeva.999@mail.ru");
         public static FrontPageModel Model = new FrontPageModel()
         {
-            //Mode = PageMode.View,
             PersonalInfo = new PersonalInfoModel("Olga", "Ageeva", "+79200513315", "olga.ageeva.999@mail.ru"),
             EducationBlock = new EducationListModel()
             {
