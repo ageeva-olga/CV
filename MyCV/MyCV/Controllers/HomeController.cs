@@ -46,6 +46,7 @@ namespace MyCV.Controllers
         [HttpGet]
         public ActionResult Index(PageMode? mode)
         {
+            //this is not working yet
             //var repo = new ProfileInfoRepository();
             //repo.GetProfileInfo();
 
