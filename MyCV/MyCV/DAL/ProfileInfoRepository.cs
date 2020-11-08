@@ -1,8 +1,9 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using System.Data.SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.IO;
 
 namespace MyCV.DAL
 {
@@ -10,29 +11,40 @@ namespace MyCV.DAL
     {
         public void GetProfileInfo()
         {
-            using (var connection = new SqliteConnection("Data Source=/Database/mycvdb.db"))
+
+            using (var sqlite_conn = CreateConnection())
             {
-                connection.Open();
 
-                var command = connection.CreateCommand();
-                command.CommandText =
-                @"
-        SELECT name
-        FROM user
-        WHERE id = $id
-    ";
-                //command.Parameters.AddWithValue("$id", id);
+                SQLiteDataReader sqlite_datareader;
+                SQLiteCommand sqlite_cmd;
+                sqlite_cmd = sqlite_conn.CreateCommand();
+                sqlite_cmd.CommandText = "SELECT * FROM PersonalInfo";
 
-                using (var reader = command.ExecuteReader())
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
                 {
-                    while (reader.Read())
-                    {
-                        var name = reader.GetString(0);
-
-                        Console.WriteLine($"Hello, {name}!");
-                    }
+                    string myreader = sqlite_datareader.GetString(0);
+                    Console.WriteLine(myreader);
                 }
+                //sqlite_conn.Close();
             }
+
         }
+
+        static SQLiteConnection CreateConnection()
+        {
+            var parentdir = AppDomain.CurrentDomain.BaseDirectory;
+            var sqlite_conn = new SQLiteConnection($"Data Source={parentdir}\\Database\\mycvdb.db; Version=3");
+            try
+            {
+                sqlite_conn.Open();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return sqlite_conn;
+        }
+
     }
 }
