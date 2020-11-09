@@ -44,8 +44,8 @@ namespace MyCV.Controllers
         [HttpGet]
         public ActionResult Index(PageMode? mode)
         {
-            //var repo = new ProfileInfoRepository();
-            //repo.GetProfileInfo();
+            var repo = new ProfileInfoRepository();
+            repo.GetProfileInfo();
 
             ViewBag.Mode = mode ?? PageMode.View;
             ModelState.Clear();
