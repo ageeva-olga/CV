@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyCV.Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,17 +22,32 @@ namespace MyCV.Models
 
         public Guid Id { get; set; }
 
+        public EducationViewModel()
+        {
+        }
+
         public EducationViewModel(string begin, string end, string schoolName)
-            :this()
         {
             Begin = begin;
             End = end;
             SchoolName = schoolName;
-        }
-
-        public EducationViewModel()
-        {
             Id = Guid.NewGuid();
         }
+
+        public EducationViewModel(Education education)
+        {
+            Id = education.Id;
+            Begin = education.Begin.ToString();
+            End = education.End.ToString();
+            SchoolName = education.SchoolName;
+        }
+
+        public void FillModel(Education model)
+        {
+            model.SchoolName = SchoolName;
+            model.Begin = int.Parse(Begin);
+            model.End = int.Parse(End);
+        }
+
     }
 }

@@ -15,12 +15,12 @@ namespace MyCV.Controllers
         {
             EducationBlock = new EducationListViewModel()
             {
-                EducationList = new List<EducationViewModel>()
-                {
-                    new EducationViewModel("2006", "2015", "Общеобразовательная школа №103"),
-                    new EducationViewModel("2015", "2017", "НТЛ №38"),
-                    new EducationViewModel("2017", "2020", "ННГУ им. Лобачевского, Институт Информационных технологий, математики и механики, Факультет Математика и компьютерные науки")
-                },
+                //EducationList = new List<EducationViewModel>()
+                //{
+                //    new EducationViewModel("2006", "2015", "Общеобразовательная школа №103"),
+                //    new EducationViewModel("2015", "2017", "НТЛ №38"),
+                //    new EducationViewModel("2017", "2020", "ННГУ им. Лобачевского, Институт Информационных технологий, математики и механики, Факультет Математика и компьютерные науки")
+                //},
                 NewEducation = new EducationViewModel()
             },
             WorkExperienceBlock = new WorkExperienceListViewModel()
@@ -44,22 +44,28 @@ namespace MyCV.Controllers
         [HttpGet]
         public ActionResult Index(PageViewMode? mode)
         {
-            var repo = new ProfileInfoRepository();
+            var repo = new PersonalInfoRepository();
             var personalInfo = repo.GetPersonalInfo();
+
+            var eduRepo = new EducationRepository();
+            var educations = eduRepo.GetEducations();
 
             ViewBag.Mode = mode ?? PageViewMode.View;
             ModelState.Clear();
             Model.PersonalInfo = new PersonalInfoViewModel(personalInfo);
-            Model.WorkExperienceBlock.NewWorkExpirience = new WorkExperienceViewModel();
+
+            Model.EducationBlock.EducationList = educations.Select(x => new EducationViewModel(x)).ToList();
             Model.EducationBlock.NewEducation = new EducationViewModel();
+            Model.WorkExperienceBlock.NewWorkExpirience = new WorkExperienceViewModel();
+
             return View("Index", Model);
         }
 
         [HttpGet]
         public ActionResult DeleteEducation(Guid id)
         {
-            var removedElement = Model.EducationBlock.EducationList.First(item => item.Id == id);
-            Model.EducationBlock.EducationList.Remove(removedElement);
+            var eduRepo = new EducationRepository();
+            eduRepo.DeleteEducation(id);
 
             ViewBag.Mode = PageViewMode.EditEducation;
 
@@ -67,13 +73,16 @@ namespace MyCV.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddEducation(EducationViewModel model)
+        public ActionResult AddEducation(EducationViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                Model.EducationBlock.EducationList.Add(model);
+                var model = new Education();
+                viewModel.FillModel(model);
+                var eduRepo = new EducationRepository();
+                eduRepo.AddEducation(model);
             }
-            Model.EducationBlock.NewEducation = model;
+            Model.EducationBlock.NewEducation = viewModel;
 
             ViewBag.Mode = PageViewMode.EditEducation;
 
@@ -107,7 +116,7 @@ namespace MyCV.Controllers
         [HttpPost]
         public ActionResult EditPersonalInfo(PersonalInfoViewModel viewModel)
         {
-            var repo = new ProfileInfoRepository();
+            var repo = new PersonalInfoRepository();
             var personalInfo = repo.GetPersonalInfo();
 
             viewModel.FillModel(personalInfo);
