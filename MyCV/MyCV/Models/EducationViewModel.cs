@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MyCV.Models
 {
-    public class EducationModel
+    public class EducationViewModel
     {
         [Required(ErrorMessage = "*")]
         [Range(0, int.MaxValue, ErrorMessage = Consts.NumberRequired)]
@@ -21,7 +21,7 @@ namespace MyCV.Models
 
         public Guid Id { get; set; }
 
-        public EducationModel(string begin, string end, string schoolName)
+        public EducationViewModel(string begin, string end, string schoolName)
             :this()
         {
             Begin = begin;
@@ -29,7 +29,7 @@ namespace MyCV.Models
             SchoolName = schoolName;
         }
 
-        public EducationModel()
+        public EducationViewModel()
         {
             Id = Guid.NewGuid();
         }

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MyCV.Models
 {
-    public class WorkExperienceModel
+    public class WorkExperienceViewModel
     {
         [Required(ErrorMessage = "*")]
         [Range(0, int.MaxValue, ErrorMessage = Consts.NumberRequired)]
@@ -23,7 +23,7 @@ namespace MyCV.Models
         public string PositionName { get; set; }
         public Guid Id { get; set; }
 
-        public WorkExperienceModel(string begin, string end, string workName, string positionName)
+        public WorkExperienceViewModel(string begin, string end, string workName, string positionName)
             : this()
         {
             Begin = begin;
@@ -32,7 +32,7 @@ namespace MyCV.Models
             PositionName = positionName;
         }
 
-        public WorkExperienceModel()
+        public WorkExperienceViewModel()
         {
             Id = Guid.NewGuid();
         }

@@ -1,4 +1,5 @@
 ﻿using MyCV.DAL;
+using MyCV.Logic.Models;
 using MyCV.Models;
 using System;
 using System.Collections.Generic;
@@ -10,47 +11,47 @@ namespace MyCV.Controllers
 {
     public class HomeController : Controller
     {
-        public static FrontPageModel Model = new FrontPageModel()
+        public static FrontPageViewModel Model = new FrontPageViewModel()
         {
-            PersonalInfo = new PersonalInfoModel("Olga", "Ageeva", "+79200513315", "olga.ageeva.999@mail.ru"),
-            EducationBlock = new EducationListModel()
+            EducationBlock = new EducationListViewModel()
             {
-                EducationList = new List<EducationModel>()
+                EducationList = new List<EducationViewModel>()
                 {
-                    new EducationModel("2006", "2015", "Общеобразовательная школа №103"),
-                    new EducationModel("2015", "2017", "НТЛ №38"),
-                    new EducationModel("2017", "2020", "ННГУ им. Лобачевского, Институт Информационных технологий, математики и механики, Факультет Математика и компьютерные науки")
+                    new EducationViewModel("2006", "2015", "Общеобразовательная школа №103"),
+                    new EducationViewModel("2015", "2017", "НТЛ №38"),
+                    new EducationViewModel("2017", "2020", "ННГУ им. Лобачевского, Институт Информационных технологий, математики и механики, Факультет Математика и компьютерные науки")
                 },
-                NewEducation = new EducationModel()
+                NewEducation = new EducationViewModel()
             },
-            WorkExperienceBlock = new WorkExperienceListModel()
+            WorkExperienceBlock = new WorkExperienceListViewModel()
             {
 
-                WorkExperienceList = new List<WorkExperienceModel>()
+                WorkExperienceList = new List<WorkExperienceViewModel>()
                {
-                   new WorkExperienceModel("2010", "2011", "BastHouse","Продавец котят"),
-                   new WorkExperienceModel("2020", "2020", "СШОР по СП и КС","Тренер-берейтор")
+                   new WorkExperienceViewModel("2010", "2011", "BastHouse","Продавец котят"),
+                   new WorkExperienceViewModel("2020", "2020", "СШОР по СП и КС","Тренер-берейтор")
                },
-                NewWorkExpirience = new WorkExperienceModel()
+                NewWorkExpirience = new WorkExperienceViewModel()
             }
         };
 
         public HomeController()
         {
-            ViewBag.Mode = PageMode.View;
+            ViewBag.Mode = PageViewMode.View;
         }
 
 
         [HttpGet]
-        public ActionResult Index(PageMode? mode)
+        public ActionResult Index(PageViewMode? mode)
         {
             var repo = new ProfileInfoRepository();
-            repo.GetProfileInfo();
+            var personalInfo = repo.GetPersonalInfo();
 
-            ViewBag.Mode = mode ?? PageMode.View;
+            ViewBag.Mode = mode ?? PageViewMode.View;
             ModelState.Clear();
-            Model.WorkExperienceBlock.NewWorkExpirience = new WorkExperienceModel();
-            Model.EducationBlock.NewEducation = new EducationModel();
+            Model.PersonalInfo = new PersonalInfoViewModel(personalInfo);
+            Model.WorkExperienceBlock.NewWorkExpirience = new WorkExperienceViewModel();
+            Model.EducationBlock.NewEducation = new EducationViewModel();
             return View("Index", Model);
         }
 
@@ -60,13 +61,13 @@ namespace MyCV.Controllers
             var removedElement = Model.EducationBlock.EducationList.First(item => item.Id == id);
             Model.EducationBlock.EducationList.Remove(removedElement);
 
-            ViewBag.Mode = PageMode.EditEducation;
+            ViewBag.Mode = PageViewMode.EditEducation;
 
             return RedirectToAction("/", new { mode = "EditEducation" });
         }
 
         [HttpPost]
-        public ActionResult AddEducation(EducationModel model)
+        public ActionResult AddEducation(EducationViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -74,7 +75,7 @@ namespace MyCV.Controllers
             }
             Model.EducationBlock.NewEducation = model;
 
-            ViewBag.Mode = PageMode.EditEducation;
+            ViewBag.Mode = PageViewMode.EditEducation;
 
             return View("Index", Model);
         }
@@ -85,28 +86,34 @@ namespace MyCV.Controllers
             var removeElement = Model.WorkExperienceBlock.WorkExperienceList.First(item => item.Id == id);
             Model.WorkExperienceBlock.WorkExperienceList.Remove(removeElement);
 
-            ViewBag.Mode = PageMode.EditWorkExperience;
+            ViewBag.Mode = PageViewMode.EditWorkExperience;
 
             return RedirectToAction("/", new { mode = "EditWorkExperience" });
         }
 
         [HttpPost]
-        public ActionResult AddWorkExperience(WorkExperienceModel model)
+        public ActionResult AddWorkExperience(WorkExperienceViewModel model)
         {
             if (ModelState.IsValid)
             {
                 Model.WorkExperienceBlock.WorkExperienceList.Add(model);
             }
             Model.WorkExperienceBlock.NewWorkExpirience = model;
-            ViewBag.Mode = PageMode.EditWorkExperience;
+            ViewBag.Mode = PageViewMode.EditWorkExperience;
 
             return View("Index", Model);
         }
 
         [HttpPost]
-        public ActionResult EditPersonalInfo(PersonalInfoModel model)
+        public ActionResult EditPersonalInfo(PersonalInfoViewModel viewModel)
         {
-            Model.PersonalInfo = model;
+            var repo = new ProfileInfoRepository();
+            var personalInfo = repo.GetPersonalInfo();
+
+            viewModel.FillModel(personalInfo);
+            repo.SavePersonalInfo(personalInfo);
+
+            Model.PersonalInfo = viewModel;
             return RedirectToAction("/");
         }
     }

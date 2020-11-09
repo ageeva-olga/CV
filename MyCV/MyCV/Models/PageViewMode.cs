@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MyCV.Models
 {
-    public enum PageMode
+    public enum PageViewMode
     {
         View = 1, 
         EditPersonalInfo = 2,
