@@ -26,11 +26,11 @@ namespace MyCV.Controllers
             WorkExperienceBlock = new WorkExperienceListViewModel()
             {
 
-                WorkExperienceList = new List<WorkExperienceViewModel>()
-               {
-                   new WorkExperienceViewModel("2010", "2011", "BastHouse","Продавец котят"),
-                   new WorkExperienceViewModel("2020", "2020", "СШОР по СП и КС","Тренер-берейтор")
-               },
+               //WorkExperienceList = new List<WorkExperienceViewModel>()
+               //{
+               //    new WorkExperienceViewModel("2010", "2011", "BastHouse","Продавец котят"),
+               //    new WorkExperienceViewModel("2020", "2020", "СШОР по СП и КС","Тренер-берейтор")
+              // },
                 NewWorkExpirience = new WorkExperienceViewModel()
             }
         };
@@ -92,8 +92,8 @@ namespace MyCV.Controllers
         [HttpGet]
         public ActionResult DeleteWorkExperience(Guid id)
         {
-            var removeElement = Model.WorkExperienceBlock.WorkExperienceList.First(item => item.Id == id);
-            Model.WorkExperienceBlock.WorkExperienceList.Remove(removeElement);
+            var workExpRepo = new WorkExperienceRepository();
+            workExpRepo.DeleteWorkExperience(id);
 
             ViewBag.Mode = PageViewMode.EditWorkExperience;
 
@@ -101,15 +101,18 @@ namespace MyCV.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddWorkExperience(WorkExperienceViewModel model)
+        public ActionResult AddWorkExperience(WorkExperienceViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                Model.WorkExperienceBlock.WorkExperienceList.Add(model);
+                var model = new WorkExperience();
+                viewModel.FillModel(model);
+                var workExpRepo = new WorkExperienceRepository();
+                workExpRepo.AddWorkExperience(model);
             }
-            Model.WorkExperienceBlock.NewWorkExpirience = model;
+            Model.WorkExperienceBlock.NewWorkExpirience = viewModel;
             ViewBag.Mode = PageViewMode.EditWorkExperience;
-
+            
             return View("Index", Model);
         }
 
