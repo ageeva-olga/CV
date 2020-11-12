@@ -29,6 +29,7 @@ namespace MyCV.Controllers
                 WorkExperienceList = new List<WorkExperienceViewModel>()
                {
                    new WorkExperienceViewModel("2010", "2011", "BastHouse","Продавец котят"),
+                   new WorkExperienceViewModel("2012", "2013", "BastHouse","Сама был котёнком"),
                    new WorkExperienceViewModel("2020", "2020", "СШОР по СП и КС","Тренер-берейтор")
                },
                 NewWorkExpirience = new WorkExperienceViewModel()
@@ -92,8 +93,11 @@ namespace MyCV.Controllers
         [HttpGet]
         public ActionResult DeleteWorkExperience(Guid id)
         {
-            var removeElement = Model.WorkExperienceBlock.WorkExperienceList.First(item => item.Id == id);
-            Model.WorkExperienceBlock.WorkExperienceList.Remove(removeElement);
+            if (id != null) 
+            { 
+                var removeElement = Model.WorkExperienceBlock.WorkExperienceList.First(item => item.Id == id);
+                Model.WorkExperienceBlock.WorkExperienceList.Remove(removeElement);
+            }
 
             ViewBag.Mode = PageViewMode.EditWorkExperience;
 
