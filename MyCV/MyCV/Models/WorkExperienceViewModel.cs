@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyCV.Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,18 +24,35 @@ namespace MyCV.Models
         public string PositionName { get; set; }
         public Guid Id { get; set; }
 
+
+        public WorkExperienceViewModel()
+        {
+        }
+
         public WorkExperienceViewModel(string begin, string end, string workName, string positionName)
-            : this()
         {
             Begin = begin;
             End = end;
             WorkName = workName;
             PositionName = positionName;
+            Id = Guid.NewGuid();
         }
 
-        public WorkExperienceViewModel()
+        public WorkExperienceViewModel(WorkExperience workExperience)
         {
-            Id = Guid.NewGuid();
+            Id = workExperience.Id;
+            Begin = workExperience.Begin.ToString();
+            End = workExperience.End.ToString();
+            WorkName = workExperience.WorkName;
+            PositionName = workExperience.PositionName;
+        }
+
+        public void FillModel(WorkExperience model)
+        {
+            model.WorkName = WorkName;
+            model.PositionName = PositionName;
+            model.Begin = int.Parse(Begin);
+            model.End = int.Parse(End);
         }
     }
 }

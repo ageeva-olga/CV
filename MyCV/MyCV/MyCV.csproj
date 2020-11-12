@@ -184,11 +184,13 @@
     <Compile Include="DAL\BaseRepository.cs" />
     <Compile Include="DAL\EducationRepository.cs" />
     <Compile Include="DAL\PersonalInfoRepository.cs" />
+    <Compile Include="DAL\WorkExperienceRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Logic\Models\Education.cs" />
     <Compile Include="Logic\Models\PersonalInfo.cs" />
+    <Compile Include="Logic\Models\WorkExperience.cs" />
     <Compile Include="Models\Consts.cs" />
     <Compile Include="Models\EducationListViewModel.cs" />
     <Compile Include="Models\EducationViewModel.cs" />
@@ -207,6 +209,7 @@
     <Content Include="Content\cv.css" />
     <Content Include="Database\Tables\Education.sql" />
     <Content Include="Database\Tables\PersonalInfo.sql" />
+    <Content Include="Database\Tables\WorkExperience.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

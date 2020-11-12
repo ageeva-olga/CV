@@ -26,12 +26,12 @@ namespace MyCV.Controllers
             WorkExperienceBlock = new WorkExperienceListViewModel()
             {
 
-                WorkExperienceList = new List<WorkExperienceViewModel>()
-               {
-                   new WorkExperienceViewModel("2010", "2011", "BastHouse","Продавец котят"),
-                   new WorkExperienceViewModel("2012", "2013", "BastHouse","Сама был котёнком"),
-                   new WorkExperienceViewModel("2020", "2020", "СШОР по СП и КС","Тренер-берейтор")
-               },
+               //WorkExperienceList = new List<WorkExperienceViewModel>()
+               //{
+               //    new WorkExperienceViewModel("2010", "2011", "BastHouse","Продавец котят"),
+               //    new WorkExperienceViewModel("2020", "2020", "СШОР по СП и КС","Тренер-берейтор")
+              // },
+
                 NewWorkExpirience = new WorkExperienceViewModel()
             }
         };
@@ -51,12 +51,17 @@ namespace MyCV.Controllers
             var eduRepo = new EducationRepository();
             var educations = eduRepo.GetEducations();
 
+            var expRepo = new WorkExperienceRepository();
+            var experience = expRepo.GetWorkExperience();
+
             ViewBag.Mode = mode ?? PageViewMode.View;
             ModelState.Clear();
             Model.PersonalInfo = new PersonalInfoViewModel(personalInfo);
 
             Model.EducationBlock.EducationList = educations.Select(x => new EducationViewModel(x)).ToList();
             Model.EducationBlock.NewEducation = new EducationViewModel();
+
+            Model.WorkExperienceBlock.WorkExperienceList = experience.Select(x => new WorkExperienceViewModel(x)).ToList();
             Model.WorkExperienceBlock.NewWorkExpirience = new WorkExperienceViewModel();
 
             return View("Index", Model);
@@ -93,11 +98,13 @@ namespace MyCV.Controllers
         [HttpGet]
         public ActionResult DeleteWorkExperience(Guid id)
         {
+
             if (id != null) 
             { 
-                var removeElement = Model.WorkExperienceBlock.WorkExperienceList.First(item => item.Id == id);
-                Model.WorkExperienceBlock.WorkExperienceList.Remove(removeElement);
+                var workExpRepo = new WorkExperienceRepository();
+                workExpRepo.DeleteWorkExperience(id);
             }
+            
 
             ViewBag.Mode = PageViewMode.EditWorkExperience;
 
@@ -105,15 +112,18 @@ namespace MyCV.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddWorkExperience(WorkExperienceViewModel model)
+        public ActionResult AddWorkExperience(WorkExperienceViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                Model.WorkExperienceBlock.WorkExperienceList.Add(model);
+                var model = new WorkExperience();
+                viewModel.FillModel(model);
+                var workExpRepo = new WorkExperienceRepository();
+                workExpRepo.AddWorkExperience(model);
             }
-            Model.WorkExperienceBlock.NewWorkExpirience = model;
+            Model.WorkExperienceBlock.NewWorkExpirience = viewModel;
             ViewBag.Mode = PageViewMode.EditWorkExperience;
-
+            
             return View("Index", Model);
         }
 
