@@ -50,12 +50,17 @@ namespace MyCV.Controllers
             var eduRepo = new EducationRepository();
             var educations = eduRepo.GetEducations();
 
+            var expRepo = new WorkExperienceRepository();
+            var experience = expRepo.GetWorkExperience();
+
             ViewBag.Mode = mode ?? PageViewMode.View;
             ModelState.Clear();
             Model.PersonalInfo = new PersonalInfoViewModel(personalInfo);
 
             Model.EducationBlock.EducationList = educations.Select(x => new EducationViewModel(x)).ToList();
             Model.EducationBlock.NewEducation = new EducationViewModel();
+
+            Model.WorkExperienceBlock.WorkExperienceList = experience.Select(x => new WorkExperienceViewModel(x)).ToList();
             Model.WorkExperienceBlock.NewWorkExpirience = new WorkExperienceViewModel();
 
             return View("Index", Model);

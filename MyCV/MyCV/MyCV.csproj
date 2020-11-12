@@ -209,6 +209,7 @@
     <Content Include="Content\cv.css" />
     <Content Include="Database\Tables\Education.sql" />
     <Content Include="Database\Tables\PersonalInfo.sql" />
+    <Content Include="Database\Tables\WorkExperience.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

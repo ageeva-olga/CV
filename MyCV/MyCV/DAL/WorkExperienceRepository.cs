@@ -16,15 +16,15 @@ namespace MyCV.DAL
             {
                 var sqlite_cmd = sqlite_conn.CreateCommand();
                 sqlite_cmd.CommandText =
-                    "SELECT Id, Begin, End, WorkName, PositionName FROM Education";
+                    "SELECT Id, Begin, End, WorkName, PositionName FROM WorkExperience";
 
                 var sqlite_datareader = sqlite_cmd.ExecuteReader();
                 while (sqlite_datareader.Read())
                 {
                     var workExperience = new WorkExperience();
                     workExperience.Id = Guid.Parse(sqlite_datareader.GetString(0));
-                    workExperience.Begin = sqlite_datareader.GetString(1);
-                    workExperience.End = sqlite_datareader.GetString(2);
+                    workExperience.Begin = sqlite_datareader.GetInt32(1);
+                    workExperience.End = sqlite_datareader.GetInt32(2);
                     workExperience.WorkName = sqlite_datareader.GetString(3);
                     workExperience.PositionName = sqlite_datareader.GetString(4);
                     workExperienceList.Add(workExperience);

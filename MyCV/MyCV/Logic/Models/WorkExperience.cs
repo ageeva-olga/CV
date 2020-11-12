@@ -7,9 +7,9 @@ namespace MyCV.Logic.Models
 {
     public class WorkExperience
     {
-        public string Begin { get; set; }
+        public int Begin { get; set; }
 
-        public string End { get; set; }
+        public int End { get; set; }
 
         public string WorkName { get; set; }
 
