@@ -31,6 +31,7 @@ namespace MyCV.Controllers
                //    new WorkExperienceViewModel("2010", "2011", "BastHouse","Продавец котят"),
                //    new WorkExperienceViewModel("2020", "2020", "СШОР по СП и КС","Тренер-берейтор")
               // },
+
                 NewWorkExpirience = new WorkExperienceViewModel()
             }
         };
@@ -97,8 +98,13 @@ namespace MyCV.Controllers
         [HttpGet]
         public ActionResult DeleteWorkExperience(Guid id)
         {
-            var workExpRepo = new WorkExperienceRepository();
-            workExpRepo.DeleteWorkExperience(id);
+
+            if (id != null) 
+            { 
+                var workExpRepo = new WorkExperienceRepository();
+                workExpRepo.DeleteWorkExperience(id);
+            }
+            
 
             ViewBag.Mode = PageViewMode.EditWorkExperience;
 
