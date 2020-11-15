@@ -197,6 +197,7 @@
     <Compile Include="Models\FrontPageViewModel.cs" />
     <Compile Include="Models\PageViewMode.cs" />
     <Compile Include="Models\PersonalInfoViewModel.cs" />
+    <Compile Include="Models\ProfessionalSkillsViewModel.cs" />
     <Compile Include="Models\WorkExperienceListViewModel.cs" />
     <Compile Include="Models\WorkExperienceViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

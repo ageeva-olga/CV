@@ -15,23 +15,10 @@ namespace MyCV.Controllers
         {
             EducationBlock = new EducationListViewModel()
             {
-                //EducationList = new List<EducationViewModel>()
-                //{
-                //    new EducationViewModel("2006", "2015", "Общеобразовательная школа №103"),
-                //    new EducationViewModel("2015", "2017", "НТЛ №38"),
-                //    new EducationViewModel("2017", "2020", "ННГУ им. Лобачевского, Институт Информационных технологий, математики и механики, Факультет Математика и компьютерные науки")
-                //},
                 NewEducation = new EducationViewModel()
             },
             WorkExperienceBlock = new WorkExperienceListViewModel()
             {
-
-               //WorkExperienceList = new List<WorkExperienceViewModel>()
-               //{
-               //    new WorkExperienceViewModel("2010", "2011", "BastHouse","Продавец котят"),
-               //    new WorkExperienceViewModel("2020", "2020", "СШОР по СП и КС","Тренер-берейтор")
-              // },
-
                 NewWorkExpirience = new WorkExperienceViewModel()
             }
         };
