@@ -56,14 +56,15 @@
             <div class="panel-heading">
                 <h3><b>Professional skills</b></h3>
             </div>
-                <p>
+            @Html.Partial("_ViewSkillCategory", Model.SkillCategoryBlock)
+                @*<p>
                     <table>
                         <tr>
                             <th>Language:</th>
                             <td>Русский</td>
                         </tr>
                     </table>
-                </p>
+                </p>*@
             </div>
     </fieldset>
 </main>

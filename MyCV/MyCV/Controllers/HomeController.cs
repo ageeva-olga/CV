@@ -20,6 +20,21 @@ namespace MyCV.Controllers
             WorkExperienceBlock = new WorkExperienceListViewModel()
             {
                 NewWorkExpirience = new WorkExperienceViewModel()
+            },
+            SkillCategoryBlock = new SkillsCategoryListViewModel()
+            {
+                NewSkillCategory = new SkillsCategoryViewModel(),
+                SkillsCategoryList = new List<SkillsCategoryViewModel>()
+                {
+                    new SkillsCategoryViewModel()
+                    {
+                        Name = "Language",
+                        Skills = new List<SkillViewModel>()
+                        {
+                            new SkillViewModel() {Name = "Russian"}
+                        }
+                    }
+                }
             }
         };
 
@@ -40,7 +55,7 @@ namespace MyCV.Controllers
 
             var expRepo = new WorkExperienceRepository();
             var experience = expRepo.GetWorkExperience();
-
+           
             ViewBag.Mode = mode ?? PageViewMode.View;
             ModelState.Clear();
             Model.PersonalInfo = new PersonalInfoViewModel(personalInfo);

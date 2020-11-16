@@ -1,0 +1,11 @@
+﻿@model MyCV.Models.SkillsCategoryListViewModel
+@foreach (var skillsCategory in Model.SkillsCategoryList)
+{
+    <tr>
+        <th>@skillsCategory.Name</th>
+        <td>@string.Join(",", skillsCategory.Skills.Select(x=>x.Name))</td>
+    </tr>
+}
+
+
+
