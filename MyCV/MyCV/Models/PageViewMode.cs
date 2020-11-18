@@ -10,7 +10,8 @@ namespace MyCV.Models
         View = 1, 
         EditPersonalInfo = 2,
         EditEducation = 3,
-        EditWorkExperience = 4
+        EditWorkExperience = 4,
+        EditSkillCategory = 5
 
     }
 }

@@ -258,6 +258,7 @@
     <Content Include="Views\Home\_EditWorkExpirienceAdd.cshtml" />
     <Content Include="Views\Home\_EditEducationAdd.cshtml" />
     <Content Include="Views\Home\_ViewSkillCategory.cshtml" />
+    <Content Include="Views\Home\_EditSkillCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -56,15 +56,16 @@
             <div class="panel-heading">
                 <h3><b>Professional skills</b></h3>
             </div>
-            @Html.Partial("_ViewSkillCategory", Model.SkillCategoryBlock)
-                @*<p>
-                    <table>
-                        <tr>
-                            <th>Language:</th>
-                            <td>Русский</td>
-                        </tr>
-                    </table>
-                </p>*@
-            </div>
+            @if (ViewBag.Mode == MyCV.Models.PageViewMode.EditSkillCategory)
+            {
+                <a href="/?mode=Index">Завершить редактирование</a>
+                @Html.Partial("_EditSkillCategory", Model.SkillCategoryBlock)
+            }
+            else
+            {
+                <a href="/?mode=EditSkillCategory">Редактировать</a>
+                @Html.Partial("_ViewSkillCategory", Model.SkillCategoryBlock)
+            }
+        </div>
     </fieldset>
 </main>
