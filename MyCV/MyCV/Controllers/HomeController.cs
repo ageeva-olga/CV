@@ -31,7 +31,9 @@ namespace MyCV.Controllers
                         Name = "Language",
                         Skills = new List<SkillViewModel>()
                         {
-                            new SkillViewModel() {Name = "Russian"}
+                            new SkillViewModel() {Name = "Russian"},
+                            new SkillViewModel() {Name = "English"},
+                            new SkillViewModel() {Name = "Italian"}
                         }
                     }
                 }
