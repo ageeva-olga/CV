@@ -1,0 +1,13 @@
+﻿@model MyCV.Models.SkillsCategoryListViewModel
+<form action="/Home/AddSkillCategory" method="post" role="form">
+    <table class="table table-striped">
+        @foreach (var skillsCategory in Model.SkillsCategoryList)
+        {
+        <tr>
+            <th>@skillsCategory.Name</th>
+            <td>@string.Join(",", skillsCategory.Skills.Select(x => x.Name))</td>
+            <td><a href="" class="btn btn-danger">X</a></td>
+        </tr>
+        }
+    </table>
+</form>

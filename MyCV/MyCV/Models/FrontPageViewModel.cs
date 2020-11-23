@@ -10,5 +10,6 @@ namespace MyCV.Models
         public PersonalInfoViewModel PersonalInfo { get; set; }
         public EducationListViewModel EducationBlock { get; set; }
         public WorkExperienceListViewModel WorkExperienceBlock { get; set; }
+        public SkillsCategoryListViewModel SkillCategoryBlock { get; set; }
     }
 }

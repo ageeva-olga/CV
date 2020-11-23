@@ -190,6 +190,8 @@
     </Compile>
     <Compile Include="Logic\Models\Education.cs" />
     <Compile Include="Logic\Models\PersonalInfo.cs" />
+    <Compile Include="Logic\Models\Skill.cs" />
+    <Compile Include="Logic\Models\SkillCategory.cs" />
     <Compile Include="Logic\Models\WorkExperience.cs" />
     <Compile Include="Models\Consts.cs" />
     <Compile Include="Models\EducationListViewModel.cs" />
@@ -197,6 +199,9 @@
     <Compile Include="Models\FrontPageViewModel.cs" />
     <Compile Include="Models\PageViewMode.cs" />
     <Compile Include="Models\PersonalInfoViewModel.cs" />
+    <Compile Include="Models\SkillsCategoryListViewModel.cs" />
+    <Compile Include="Models\SkillsCategoryViewModel.cs" />
+    <Compile Include="Models\SkillViewModel.cs" />
     <Compile Include="Models\WorkExperienceListViewModel.cs" />
     <Compile Include="Models\WorkExperienceViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -252,6 +257,8 @@
     <Content Include="Views\Home\_EditWorkExperience.cshtml" />
     <Content Include="Views\Home\_EditWorkExpirienceAdd.cshtml" />
     <Content Include="Views\Home\_EditEducationAdd.cshtml" />
+    <Content Include="Views\Home\_ViewSkillCategory.cshtml" />
+    <Content Include="Views\Home\_EditSkillCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
