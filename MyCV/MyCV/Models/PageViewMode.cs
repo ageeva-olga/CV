@@ -11,7 +11,7 @@ namespace MyCV.Models
         EditPersonalInfo = 2,
         EditEducation = 3,
         EditWorkExperience = 4,
-        EditSkillCategory = 5
-
+        EditSkillCategory = 5,
+        EditSkill = 6
     }
 }

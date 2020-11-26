@@ -3,12 +3,13 @@
     <table class="table table-striped">
         @foreach (var skillsCategory in Model.SkillsCategoryList)
         {
-            <tr>
-                <th>@skillsCategory.Name</th>
+        <tr>
+            <td><a href="/Home/DeleteSkillsCategory?Id=@skillsCategory.Id" class="btn btn-danger">X</a></td>
+            <td>@skillsCategory.Name</td>
 
-                @Html.Partial("_SkillView", skillsCategory.Skills)
-                @**@
-            </tr>
+            @Html.Partial("_SkillView", skillsCategory.Skills)
+            @**@
+        </tr>
         }
     </table>
 </form>

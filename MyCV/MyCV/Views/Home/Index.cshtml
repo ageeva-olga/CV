@@ -61,9 +61,14 @@
                 <a href="/?mode=Index">Завершить редактирование</a>
                 @Html.Partial("_EditSkillCategory", Model.SkillCategoryBlock)
             }
+            else if (ViewBag.Mode == MyCV.Models.PageViewMode.EditSkill)
+            {
+                <a href="/?mode=Index">Завершить редактирование</a>
+                @Html.Partial("_EditSkill", Model.SkillBlock)
+            }
             else
             {
-                <a href="/?mode=EditSkillCategory">Редактировать</a>
+                <a href = "/?mode=EditSkillCategory">Редактировать</a>
                 @Html.Partial("_ViewSkillCategory", Model.SkillCategoryBlock)
             }
         </div>

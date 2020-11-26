@@ -9,5 +9,6 @@ namespace MyCV.Logic.Models
     {
         public string Name { get; set; }
         public List<Skill> Skills { get; set; }
+        public Guid Id { get; set; }
     }
 }

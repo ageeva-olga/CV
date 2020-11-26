@@ -9,6 +9,7 @@ namespace MyCV.Models
     {
         public string Name { get; set; }
         public List<SkillViewModel> Skills { get; set; }
+        public Guid Id { get; set; }
 
         public SkillsCategoryViewModel()
         {

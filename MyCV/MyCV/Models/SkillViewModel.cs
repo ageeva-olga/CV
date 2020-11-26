@@ -8,5 +8,6 @@ namespace MyCV.Models
     public class SkillViewModel
     {
         public string Name { get; set; }
+        public Guid Id { get; set; }
     }
 }

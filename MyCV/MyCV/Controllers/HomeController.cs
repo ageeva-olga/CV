@@ -131,6 +131,28 @@ namespace MyCV.Controllers
             return View("Index", Model);
         }
 
+        [HttpGet]
+        public ActionResult DeleteSkillsCategory(Guid id)
+        {
+            var removedElement = Model.SkillCategoryBlock.SkillsCategoryList.First(item => item.Id == id);
+            Model.SkillCategoryBlock.SkillsCategoryList.Remove(removedElement);
+
+            ViewBag.Mode = PageViewMode.EditSkillCategory;
+
+            return RedirectToAction("/", new { mode = "EditSkillCategory" });
+        }
+
+        [HttpGet]
+        public ActionResult DeleteSkill(Guid id)
+        {
+            var removedElement = Model.SkillBlock.Skills.First(item => item.Id == id);
+            Model.SkillBlock.Skills.Remove(removedElement);
+
+            ViewBag.Mode = PageViewMode.EditSkill;
+
+            return RedirectToAction("/", new { mode = "EditSkill" });
+        }
+
         [HttpPost]
         public ActionResult EditPersonalInfo(PersonalInfoViewModel viewModel)
         {
