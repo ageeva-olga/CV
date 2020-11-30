@@ -4,7 +4,7 @@
     {
         <tr>
             <th>@skillsCategory.Name</th>
-            <td>@string.Join(",", skillsCategory.Skills.Select(x => x.Name))</td>
+            <td>@string.Join(", ", skillsCategory.Skills.Select(x => x.Name))</td>
         </tr>
     }
 </table>

@@ -184,6 +184,7 @@
     <Compile Include="DAL\BaseRepository.cs" />
     <Compile Include="DAL\EducationRepository.cs" />
     <Compile Include="DAL\PersonalInfoRepository.cs" />
+    <Compile Include="DAL\SkillsRepository.cs" />
     <Compile Include="DAL\WorkExperienceRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -214,6 +215,8 @@
     <Content Include="Content\cv.css" />
     <Content Include="Database\Tables\Education.sql" />
     <Content Include="Database\Tables\PersonalInfo.sql" />
+    <Content Include="Database\Tables\SkillCategory.sql" />
+    <Content Include="Database\Tables\Skills.sql" />
     <Content Include="Database\Tables\WorkExperience.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -259,7 +262,6 @@
     <Content Include="Views\Home\_EditEducationAdd.cshtml" />
     <Content Include="Views\Home\_ViewSkillCategory.cshtml" />
     <Content Include="Views\Home\_EditSkillCategory.cshtml" />
-    <Content Include="Views\Home\_SkillView.cshtml" />
     <Content Include="Views\Home\_EditSkill.cshtml" />
   </ItemGroup>
   <ItemGroup>

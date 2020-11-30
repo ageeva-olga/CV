@@ -25,18 +25,30 @@ namespace MyCV.Controllers
             {
                 NewSkillCategory = new SkillsCategoryViewModel(),
                 SkillsCategoryList = new List<SkillsCategoryViewModel>()
-                {
-                    new SkillsCategoryViewModel()
-                    {
-                        Name = "Language",
-                        Skills = new List<SkillViewModel>()
-                        {
-                            new SkillViewModel() {Name = "Russian"},
-                            new SkillViewModel() {Name = "English"},
-                            new SkillViewModel() {Name = "Italian"}
-                        }
-                    }
-                }
+                //{
+                //    new SkillsCategoryViewModel()
+                //    {
+                //        Id = Guid.NewGuid(),
+                //        Name = "Language",
+                //        Skills = new List<SkillViewModel>()
+                //        {
+                //            new SkillViewModel() {Id = Guid.NewGuid(), Name = "Russian"},
+                //            new SkillViewModel() {Id = Guid.NewGuid(), Name = "English"},
+                //            new SkillViewModel() {Id = Guid.NewGuid(), Name = "Italian"}
+                //        }
+                //    },
+                //    new SkillsCategoryViewModel()
+                //    {
+                //        Id = Guid.NewGuid(),
+                //        Name = "IDE",
+                //        Skills = new List<SkillViewModel>()
+                //        {
+                //            new SkillViewModel() {Id = Guid.NewGuid(), Name = "VS2017"},
+                //            new SkillViewModel() {Id = Guid.NewGuid(), Name = "MatLab"},
+                //            new SkillViewModel() {Id = Guid.NewGuid(), Name = "LateX"}
+                //        }
+                //    }
+                //}
             }
         };
 
@@ -57,7 +69,10 @@ namespace MyCV.Controllers
 
             var expRepo = new WorkExperienceRepository();
             var experience = expRepo.GetWorkExperience();
-           
+
+            var skillsRepo = new SkillsRepository();
+            var skills = skillsRepo.GetSkills();
+
             ViewBag.Mode = mode ?? PageViewMode.View;
             ModelState.Clear();
             Model.PersonalInfo = new PersonalInfoViewModel(personalInfo);
@@ -67,6 +82,8 @@ namespace MyCV.Controllers
 
             Model.WorkExperienceBlock.WorkExperienceList = experience.Select(x => new WorkExperienceViewModel(x)).ToList();
             Model.WorkExperienceBlock.NewWorkExpirience = new WorkExperienceViewModel();
+
+            Model.SkillCategoryBlock.SkillsCategoryList = skills.Select(x => new SkillsCategoryViewModel(x)).ToList();
 
             return View("Index", Model);
         }
@@ -145,9 +162,15 @@ namespace MyCV.Controllers
         [HttpGet]
         public ActionResult DeleteSkill(Guid id)
         {
-            var removedElement = Model.SkillBlock.Skills.First(item => item.Id == id);
-            Model.SkillBlock.Skills.Remove(removedElement);
+            var removedSkillCategory = Model.SkillCategoryBlock.SkillsCategoryList
+                .FirstOrDefault(x => x.Skills.Any(y => y.Id == id));
 
+            if (removedSkillCategory!=null)
+            {
+                var removedSkill = removedSkillCategory.Skills.First(x => x.Id == id);
+                removedSkillCategory.Skills.Remove(removedSkill);
+            }
+            
             ViewBag.Mode = PageViewMode.EditSkill;
 
             return RedirectToAction("/", new { mode = "EditSkill" });

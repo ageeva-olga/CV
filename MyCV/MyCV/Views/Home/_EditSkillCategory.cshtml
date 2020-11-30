@@ -7,8 +7,7 @@
             <td><a href="/Home/DeleteSkillsCategory?Id=@skillsCategory.Id" class="btn btn-danger">X</a></td>
             <td>@skillsCategory.Name</td>
 
-            @Html.Partial("_SkillView", skillsCategory.Skills)
-            @**@
+            @Html.Partial("_EditSkill", skillsCategory.Skills)
         </tr>
         }
     </table>

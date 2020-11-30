@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyCV.Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,17 @@ namespace MyCV.Models
 
         public SkillsCategoryViewModel()
         {
+        }
+
+        public SkillsCategoryViewModel(SkillCategory model)
+        {
+            Name = model.Name;
+            Id = model.Id;
+            Skills = model.Skills.Select(x => new SkillViewModel()
+            {
+                Id = x.Id,
+                Name = x.Name
+            }).ToList();
         }
     }
 }
