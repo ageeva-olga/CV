@@ -1,6 +1,7 @@
 ﻿using MyCV.Logic.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Web;
 
@@ -40,6 +41,19 @@ INNER JOIN Skills s ON sc.Id = s.SkillCategory;";
             }
 
             return skillList;
+        }
+
+        public void DeleteSkill(Guid id)
+        {
+            using (var sqlite_conn = CreateConnection())
+            {
+                var sqlite_cmd = sqlite_conn.CreateCommand();
+                sqlite_cmd.CommandText =
+                    "DELETE FROM Skills WHERE id = @id";
+
+                sqlite_cmd.Parameters.Add(new SQLiteParameter("@id", id.ToString()));
+                sqlite_cmd.ExecuteNonQuery();
+            }
         }
     }
 }

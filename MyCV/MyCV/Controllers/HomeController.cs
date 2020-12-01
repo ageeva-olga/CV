@@ -25,30 +25,6 @@ namespace MyCV.Controllers
             {
                 NewSkillCategory = new SkillsCategoryViewModel(),
                 SkillsCategoryList = new List<SkillsCategoryViewModel>()
-                //{
-                //    new SkillsCategoryViewModel()
-                //    {
-                //        Id = Guid.NewGuid(),
-                //        Name = "Language",
-                //        Skills = new List<SkillViewModel>()
-                //        {
-                //            new SkillViewModel() {Id = Guid.NewGuid(), Name = "Russian"},
-                //            new SkillViewModel() {Id = Guid.NewGuid(), Name = "English"},
-                //            new SkillViewModel() {Id = Guid.NewGuid(), Name = "Italian"}
-                //        }
-                //    },
-                //    new SkillsCategoryViewModel()
-                //    {
-                //        Id = Guid.NewGuid(),
-                //        Name = "IDE",
-                //        Skills = new List<SkillViewModel>()
-                //        {
-                //            new SkillViewModel() {Id = Guid.NewGuid(), Name = "VS2017"},
-                //            new SkillViewModel() {Id = Guid.NewGuid(), Name = "MatLab"},
-                //            new SkillViewModel() {Id = Guid.NewGuid(), Name = "LateX"}
-                //        }
-                //    }
-                //}
             }
         };
 
@@ -162,13 +138,16 @@ namespace MyCV.Controllers
         [HttpGet]
         public ActionResult DeleteSkill(Guid id)
         {
+
             var removedSkillCategory = Model.SkillCategoryBlock.SkillsCategoryList
                 .FirstOrDefault(x => x.Skills.Any(y => y.Id == id));
 
             if (removedSkillCategory!=null)
             {
-                var removedSkill = removedSkillCategory.Skills.First(x => x.Id == id);
-                removedSkillCategory.Skills.Remove(removedSkill);
+                var skillRepo = new SkillsRepository();
+                skillRepo.DeleteSkill(id);
+               // var removedSkill = removedSkillCategory.Skills.First(x => x.Id == id);
+               // removedSkillCategory.Skills.Remove(removedSkill);
             }
             
             ViewBag.Mode = PageViewMode.EditSkill;
