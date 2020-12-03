@@ -23,8 +23,14 @@ namespace MyCV.Models
             Skills = model.Skills.Select(x => new SkillViewModel()
             {
                 Id = x.Id,
-                Name = x.Name
+                Name = x.Name,
+                SkillCategory = model.Id
             }).ToList();
+        }
+
+        public void FillModel(SkillCategory model)
+        {
+            model.Name = Name;
         }
     }
 }

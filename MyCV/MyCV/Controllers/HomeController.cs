@@ -96,12 +96,12 @@ namespace MyCV.Controllers
         public ActionResult DeleteWorkExperience(Guid id)
         {
 
-            if (id != null) 
-            { 
+            if (id != null)
+            {
                 var workExpRepo = new WorkExperienceRepository();
                 workExpRepo.DeleteWorkExperience(id);
             }
-            
+
 
             ViewBag.Mode = PageViewMode.EditWorkExperience;
 
@@ -120,39 +120,61 @@ namespace MyCV.Controllers
             }
             Model.WorkExperienceBlock.NewWorkExpirience = viewModel;
             ViewBag.Mode = PageViewMode.EditWorkExperience;
-            
+
             return View("Index", Model);
         }
 
         [HttpGet]
         public ActionResult DeleteSkillsCategory(Guid id)
         {
-            var removedElement = Model.SkillCategoryBlock.SkillsCategoryList.First(item => item.Id == id);
-            Model.SkillCategoryBlock.SkillsCategoryList.Remove(removedElement);
+            var skillRepo = new SkillsRepository();
+            skillRepo.DeleteSkillCategory(id);
 
             ViewBag.Mode = PageViewMode.EditSkillCategory;
 
             return RedirectToAction("/", new { mode = "EditSkillCategory" });
         }
 
+        [HttpPost]
+        public ActionResult AddSkillCategory(SkillsCategoryViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var model = new SkillCategory();
+                viewModel.FillModel(model);
+                var skillCatRepo = new SkillsRepository();
+                skillCatRepo.AddSkillCategory(model);
+            }
+            Model.SkillCategoryBlock.NewSkillCategory = viewModel;
+            ViewBag.Mode = PageViewMode.EditSkillCategory;
+
+            return View("Index", Model);
+        }
+
         [HttpGet]
         public ActionResult DeleteSkill(Guid id)
         {
+            var skillRepo = new SkillsRepository();
+            skillRepo.DeleteSkill(id);
 
-            var removedSkillCategory = Model.SkillCategoryBlock.SkillsCategoryList
-                .FirstOrDefault(x => x.Skills.Any(y => y.Id == id));
+            ViewBag.Mode = PageViewMode.EditSkillCategory;
 
-            if (removedSkillCategory!=null)
+            return RedirectToAction("/", new { mode = "EditSkillCategory" });
+        }
+
+        public ActionResult AddSkill(SkillViewModel viewModel)
+        {
+            if (ModelState.IsValid)
             {
+                var model = new Skill();
+                viewModel.FillModel(model);
                 var skillRepo = new SkillsRepository();
-                skillRepo.DeleteSkill(id);
-               // var removedSkill = removedSkillCategory.Skills.First(x => x.Id == id);
-               // removedSkillCategory.Skills.Remove(removedSkill);
+                skillRepo.AddSkill(model, viewModel.SkillCategory);
             }
-            
-            ViewBag.Mode = PageViewMode.EditSkill;
+            //Model.SkillCategoryBlock.NewSkillCategory = viewModel;
+            ViewBag.Mode = PageViewMode.EditSkillCategory;
 
-            return RedirectToAction("/", new { mode = "EditSkill" });
+            return View("Index", Model);
         }
 
         [HttpPost]
