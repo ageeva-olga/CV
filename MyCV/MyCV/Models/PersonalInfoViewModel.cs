@@ -1,6 +1,7 @@
 ﻿using MyCV.Logic.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,10 +9,16 @@ namespace MyCV.Models
 {
     public class PersonalInfoViewModel
     {
-
+        [Required(ErrorMessage = "*")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "*")]
         public string Surname { get; set; }
+
+        [Required(ErrorMessage = "*")]
         public string Phone { get; set; }
+
+        [Required(ErrorMessage = "*")]
         public string Email { get; set; }
 
         public string FullName => $"{Name} {Surname}";
