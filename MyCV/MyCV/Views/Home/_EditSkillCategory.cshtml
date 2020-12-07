@@ -1,13 +1,43 @@
 ﻿@model MyCV.Models.SkillsCategoryListViewModel
-<form action="/Home/AddSkillCategory" method="post" role="form">
+
+
+
     <table class="table table-striped">
         @foreach (var skillsCategory in Model.SkillsCategoryList)
         {
-        <tr>
-            <th>@skillsCategory.Name</th>
-            <td>@string.Join(",", skillsCategory.Skills.Select(x => x.Name))</td>
-            <td><a href="" class="btn btn-danger">X</a></td>
-        </tr>
-        }
-    </table>
-</form>
+
+            <tr>
+                <td><a href="/Home/DeleteSkillsCategory?Id=@skillsCategory.Id" class="btn btn-danger">X</a></td>
+                <td>@skillsCategory.Name</td>
+                <td>
+                    <form action="/Home/AddSkill" method="post" role="form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="text" name="Name" class="form-control" placeholder="Имя" value="">
+                                    <input type="hidden" name="SkillCategory" class="form-control" value="@skillsCategory.Id">
+                                    @Html.ValidationMessage("Name", "", new { @class = "text-danger" })
+                                </td>
+                                <td>
+                                    <input type="submit" class="btn btn-success" value="+" />
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </td>
+                @Html.Partial("_EditSkill", skillsCategory.Skills)
+            </tr>
+
+}
+        </table>
+        <form action="/Home/AddSkillCategory" method="post" role="form">
+            <table>
+                <tr>
+                    <td><input type="submit" class="btn btn-success" value="Add" /></td>
+                    <td>
+                        <input type="text" name="Name" class="form-control" placeholder="Имя" value="">
+                        @Html.ValidationMessage("Name", "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+            </table>
+        </form>
