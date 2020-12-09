@@ -47,7 +47,7 @@ namespace MyCV.Controllers
             var frontPageViewModel = GetFrontPageViewModel(PageViewMode.EditEducation);
             frontPageViewModel.EducationBlock.NewEducation = viewModel;
 
-            return View("Index", frontPageViewModel);
+            return new RedirectResult(Url.Action("Index", new { mode = "EditEducation" }) + "#education");
         }
 
         [HttpGet]
@@ -76,7 +76,7 @@ namespace MyCV.Controllers
             var frontPageViewModel = GetFrontPageViewModel(PageViewMode.EditWorkExperience);
             frontPageViewModel.WorkExperienceBlock.NewWorkExpirience = viewModel;
 
-            return View("Index", frontPageViewModel);
+            return new RedirectResult(Url.Action("Index", new { mode = "EditWorkExperience" }) + "#workexperience");
         }
 
         [HttpGet]

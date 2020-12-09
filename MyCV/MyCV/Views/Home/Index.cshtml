@@ -6,16 +6,18 @@
 <aside class="sidebar">
     @if (ViewBag.Mode == MyCV.Models.PageViewMode.EditPersonalInfo)
     {
+        <a href="/?mode=Index">Завершить редактирование</a>
         @Html.Partial("_EditPersonalInfo", Model.PersonalInfo)
     }
     else
     {
+        <a href="/?mode=EditPersonalInfo">Редактировать</a>
         @Html.Partial("_ViewPersonalInfo", Model.PersonalInfo)
     }
 </aside>
 
 <main class="content">
-    <fieldset>
+    <fieldset id="education">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3><b>Education</b></h3>
@@ -33,7 +35,7 @@
         </div>
     </fieldset>
 
-    <fieldset>
+    <fieldset id="workexperience">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3><b>Work Experience</b></h3>
@@ -63,7 +65,7 @@
             }
             else
             {
-                <a href = "/?mode=EditSkillCategory">Редактировать</a>
+                <a href="/?mode=EditSkillCategory">Редактировать</a>
                 @Html.Partial("_ViewSkillCategory", Model.SkillCategoryBlock)
             }
         </div>

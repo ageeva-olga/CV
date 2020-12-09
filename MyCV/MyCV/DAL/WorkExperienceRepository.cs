@@ -63,5 +63,19 @@ namespace MyCV.DAL
                 sqlite_cmd.ExecuteNonQuery();
             }
         }
+        public void AddSkill(Skill skill, Guid skillCategory)
+        {
+            using (var sqlite_conn = CreateConnection())
+            {
+                var sqlite_cmd = sqlite_conn.CreateCommand();
+                sqlite_cmd.CommandText =
+                    "INSERT INTO Skills (Id, Name, SkillCategory) VALUES (@id, @Name, @SkillCategory)";
+
+                sqlite_cmd.Parameters.Add(new SQLiteParameter("@id", Guid.NewGuid().ToString()));
+                sqlite_cmd.Parameters.Add(new SQLiteParameter("@Name", skill.Name));
+                sqlite_cmd.Parameters.Add(new SQLiteParameter("@SkillCategory", skillCategory.ToString()));
+                sqlite_cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
