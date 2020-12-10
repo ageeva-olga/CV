@@ -12,6 +12,14 @@ namespace MyCV.Models
         public Guid Id { get; set; }
         public Guid SkillCategory { get; set; }
 
+        public SkillViewModel() { }
+
+        public SkillViewModel(Skill model)
+        {
+            Name = model.Name;
+            Id = model.Id;
+        }
+
         public void FillModel(Skill model)
         {
             model.Name = Name;

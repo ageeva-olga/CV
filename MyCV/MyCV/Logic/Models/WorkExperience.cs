@@ -16,5 +16,7 @@ namespace MyCV.Logic.Models
         public string PositionName { get; set; }
 
         public Guid Id { get; set; }
+
+        public List<Skill> Skills { get; set; }
     }
 }
