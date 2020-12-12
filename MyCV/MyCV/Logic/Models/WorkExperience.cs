@@ -18,5 +18,10 @@ namespace MyCV.Logic.Models
         public Guid Id { get; set; }
 
         public List<Skill> Skills { get; set; }
+
+        public WorkExperience()
+        {
+            Skills = new List<Skill>();
+        }
     }
 }
