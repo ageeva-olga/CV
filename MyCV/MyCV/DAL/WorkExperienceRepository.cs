@@ -59,7 +59,9 @@ namespace MyCV.DAL
             {
                 var sqlite_cmd = sqlite_conn.CreateCommand();
                 sqlite_cmd.CommandText =
-                    "DELETE FROM WorkExperience WHERE id = @id";
+                    @"  PRAGMA foreign_keys = ON; 
+                        DELETE FROM SkillExperience WHERE ExpId = @id;
+                        DELETE FROM WorkExperience WHERE id = @id";
 
                 sqlite_cmd.Parameters.Add(new SQLiteParameter("@id", id.ToString()));
                 sqlite_cmd.ExecuteNonQuery();
