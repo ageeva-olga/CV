@@ -8,6 +8,7 @@
             <td>@workExperience.Begin-@workExperience.End</td>
             <td>@workExperience.WorkName</td>
             <td>@workExperience.PositionName</td>
+            <td>@Html.Partial("_EditSkill", workExperience.Skills)</td>
             <td><a href="/Home/DeleteWorkExperience?Id=@workExperience.Id" class="btn btn-danger">X</a></td>
         </tr>
         }

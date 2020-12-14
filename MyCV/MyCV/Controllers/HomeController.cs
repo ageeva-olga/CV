@@ -147,6 +147,15 @@ namespace MyCV.Controllers
 
         }
 
+        [HttpGet]
+        public ActionResult DeleteSkillExperience(Guid id)
+        {
+            var workExpRepo = new WorkExperienceRepository();
+            workExpRepo.DeleteSkillExperience(id);
+
+            return RedirectToAction("/", new { mode = "EditWorkExperience" });
+        }
+
         private FrontPageViewModel GetFrontPageViewModel(PageViewMode? mode)
         {
             var repo = new PersonalInfoRepository();

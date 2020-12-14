@@ -47,7 +47,7 @@ namespace MyCV.Models
             End = workExperience.End.ToString();
             WorkName = workExperience.WorkName;
             PositionName = workExperience.PositionName;
-            Skills = workExperience.Skills.Select(skill => new SkillViewModel(skill)).ToList();
+            Skills = workExperience.Skills.Select(skill => new SkillViewModel("DeleteSkillExperience",skill)).ToList();
         }
 
         public void FillModel(WorkExperience model)

@@ -74,13 +74,26 @@ namespace MyCV.DAL
             {
                 var sqlite_cmd = sqlite_conn.CreateCommand();
                 sqlite_cmd.CommandText =
-                    "INSERT INTO WorkExperience (Id, Begin, End, WorkName, PositionName) VALUES (@id, @begin, @end, @workName, @positionName)";
+                    "PRAGMA foreign_keys = ON; INSERT INTO WorkExperience (Id, Begin, End, WorkName, PositionName) VALUES (@id, @begin, @end, @workName, @positionName)";
 
                 sqlite_cmd.Parameters.Add(new SQLiteParameter("@id", Guid.NewGuid().ToString()));
                 sqlite_cmd.Parameters.Add(new SQLiteParameter("@begin", workExperience.Begin));
                 sqlite_cmd.Parameters.Add(new SQLiteParameter("@end", workExperience.End));
                 sqlite_cmd.Parameters.Add(new SQLiteParameter("@workName", workExperience.WorkName));
                 sqlite_cmd.Parameters.Add(new SQLiteParameter("@positionName", workExperience.PositionName));
+                sqlite_cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteSkillExperience(Guid id)
+        {
+            using (var sqlite_conn = CreateConnection())
+            {
+                var sqlite_cmd = sqlite_conn.CreateCommand();
+                sqlite_cmd.CommandText =
+                    "PRAGMA foreign_keys = ON; DELETE FROM SkillExperience WHERE SkillId = @id";
+
+                sqlite_cmd.Parameters.Add(new SQLiteParameter("@id", id.ToString()));
                 sqlite_cmd.ExecuteNonQuery();
             }
         }
