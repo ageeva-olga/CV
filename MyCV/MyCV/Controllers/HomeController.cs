@@ -47,7 +47,7 @@ namespace MyCV.Controllers
             var frontPageViewModel = GetFrontPageViewModel(PageViewMode.EditEducation);
             frontPageViewModel.EducationBlock.NewEducation = viewModel;
 
-            return new RedirectResult(Url.Action("Index", new { mode = "EditEducation" }) + "#education");
+            return View("Index", frontPageViewModel);
         }
 
         [HttpGet]
@@ -76,7 +76,7 @@ namespace MyCV.Controllers
             var frontPageViewModel = GetFrontPageViewModel(PageViewMode.EditWorkExperience);
             frontPageViewModel.WorkExperienceBlock.NewWorkExpirience = viewModel;
 
-            return new RedirectResult(Url.Action("Index", new { mode = "EditWorkExperience" }) + "#workexperience");
+            return View("Index", frontPageViewModel);
         }
 
         [HttpGet]
@@ -145,6 +145,15 @@ namespace MyCV.Controllers
             model.PersonalInfo = viewModel;
             return View("Index", model);
 
+        }
+
+        [HttpGet]
+        public ActionResult DeleteSkillExperience(Guid id)
+        {
+            var workExpRepo = new WorkExperienceRepository();
+            workExpRepo.DeleteSkillExperience(id);
+
+            return RedirectToAction("/", new { mode = "EditWorkExperience" });
         }
 
         private FrontPageViewModel GetFrontPageViewModel(PageViewMode? mode)

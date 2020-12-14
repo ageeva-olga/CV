@@ -20,12 +20,7 @@ namespace MyCV.Models
         {
             Name = model.Name;
             Id = model.Id;
-            Skills = model.Skills.Select(x => new SkillViewModel()
-            {
-                Id = x.Id,
-                Name = x.Name,
-                SkillCategory = model.Id
-            }).ToList();
+            Skills = model.Skills.Select(x => new SkillViewModel("DeleteSkill", x)).ToList();
         }
 
         public void FillModel(SkillCategory model)

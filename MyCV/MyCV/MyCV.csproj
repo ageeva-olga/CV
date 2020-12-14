@@ -216,6 +216,7 @@
     <Content Include="Database\Tables\Education.sql" />
     <Content Include="Database\Tables\PersonalInfo.sql" />
     <Content Include="Database\Tables\SkillCategory.sql" />
+    <Content Include="Database\Tables\SkillExperience.sql" />
     <Content Include="Database\Tables\Skills.sql" />
     <Content Include="Database\Tables\WorkExperience.sql" />
     <Content Include="favicon.ico" />
