@@ -54,7 +54,7 @@ LEFT JOIN Skills s ON sc.Id = s.SkillCategory;";
             {
                 var sqlite_cmd = sqlite_conn.CreateCommand();
                 sqlite_cmd.CommandText =
-                    "DELETE FROM Skills WHERE id = @id";
+                    "PRAGMA foreign_keys = ON; DELETE FROM Skills WHERE id = @id";
 
                 sqlite_cmd.Parameters.Add(new SQLiteParameter("@id", id.ToString()));
                 sqlite_cmd.ExecuteNonQuery();
@@ -67,13 +67,13 @@ LEFT JOIN Skills s ON sc.Id = s.SkillCategory;";
             {
                 var deleteSkills_cmd = sqlite_conn.CreateCommand();
                 deleteSkills_cmd.CommandText =
-                    "DELETE FROM Skills WHERE SkillCategory = @id";
+                    "PRAGMA foreign_keys = ON; DELETE FROM Skills WHERE SkillCategory = @id";
                 deleteSkills_cmd.Parameters.Add(new SQLiteParameter("@id", id.ToString()));
                 deleteSkills_cmd.ExecuteNonQuery();
 
                 var deleteCategory_cmd = sqlite_conn.CreateCommand();
                 deleteCategory_cmd.CommandText =
-                    "DELETE FROM SkillCategory WHERE id = @id";
+                    "PRAGMA foreign_keys = ON; DELETE FROM SkillCategory WHERE id = @id";
                 deleteCategory_cmd.Parameters.Add(new SQLiteParameter("@id", id.ToString()));
                 deleteCategory_cmd.ExecuteNonQuery();
             }
@@ -85,7 +85,7 @@ LEFT JOIN Skills s ON sc.Id = s.SkillCategory;";
             {
                 var sqlite_cmd = sqlite_conn.CreateCommand();
                 sqlite_cmd.CommandText =
-                    "INSERT INTO SkillCategory (Id, Name) VALUES (@id, @Name)";
+                    "PRAGMA foreign_keys = ON; INSERT INTO SkillCategory (Id, Name) VALUES (@id, @Name)";
 
                 sqlite_cmd.Parameters.Add(new SQLiteParameter("@id", Guid.NewGuid().ToString()));
                 sqlite_cmd.Parameters.Add(new SQLiteParameter("@Name", skillCategory.Name));
@@ -99,7 +99,7 @@ LEFT JOIN Skills s ON sc.Id = s.SkillCategory;";
             {
                 var sqlite_cmd = sqlite_conn.CreateCommand();
                 sqlite_cmd.CommandText =
-                    "INSERT INTO Skills (Id, Name, SkillCategory) VALUES (@id, @Name, @SkillCategory)";
+                    "PRAGMA foreign_keys = ON; INSERT INTO Skills (Id, Name, SkillCategory) VALUES (@id, @Name, @SkillCategory)";
 
                 sqlite_cmd.Parameters.Add(new SQLiteParameter("@id", Guid.NewGuid().ToString()));
                 sqlite_cmd.Parameters.Add(new SQLiteParameter("@Name", skill.Name));
