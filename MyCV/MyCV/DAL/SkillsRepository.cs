@@ -18,7 +18,8 @@ namespace MyCV.DAL
                 sqlite_cmd.CommandText =
 @"SELECT sc.Id as CatgoryId, sc.Name as CategoryName, s.Id as SkillId, s.Name as SkillName
 FROM SkillCategory sc
-LEFT JOIN Skills s ON sc.Id = s.SkillCategory;";
+LEFT JOIN Skills s ON sc.Id = s.SkillCategory;
+ORDER BY Name";
 
                 var sqlite_datareader = sqlite_cmd.ExecuteReader();
                 while (sqlite_datareader.Read())

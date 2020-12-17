@@ -19,7 +19,8 @@ namespace MyCV.DAL
                     @"SELECT w.Id, Begin, End, WorkName, PositionName, se.SkillId, s.Name
                     FROM WorkExperience w
                     LEFT JOIN SkillExperience se ON w.Id = se.ExpId
-                    LEFT JOIN Skills s ON s.ID = se.SkillId";
+                    LEFT JOIN Skills s ON s.ID = se.SkillId
+                    ORDER BY Begin, End, WorkName";
 
                 var sqlite_datareader = sqlite_cmd.ExecuteReader();
                 while (sqlite_datareader.Read())
