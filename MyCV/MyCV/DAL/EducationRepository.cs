@@ -16,7 +16,7 @@ namespace MyCV.DAL
             {
                 var sqlite_cmd = sqlite_conn.CreateCommand();
                 sqlite_cmd.CommandText =
-                    "SELECT Id, Begin, End, Name FROM Education";
+                    "SELECT Id, Begin, End, Name FROM Education ORDER BY Begin, End, Name";
 
                 var sqlite_datareader = sqlite_cmd.ExecuteReader();
                 while (sqlite_datareader.Read())

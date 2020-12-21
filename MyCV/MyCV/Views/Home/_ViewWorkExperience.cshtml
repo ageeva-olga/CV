@@ -4,7 +4,6 @@
         <th>Даты</th>
         <th>Место работы</th>
         <th>Должность</th>
-        <th>Навыки</th>
     </tr>
     @foreach (var workExperience in Model.WorkExperienceList)
     {
@@ -12,7 +11,13 @@
             <td>@workExperience.Begin-@workExperience.End</td>
             <td>@workExperience.WorkName</td>
             <td>@workExperience.PositionName</td>
-            <td>@string.Join(", ", workExperience.Skills.Select(x => x.Name))</td>
         </tr>
+        <table class="table table-striped">
+            <tr>
+                <td></td>
+                <th>Навыки</th>
+                <td>@string.Join(", ", workExperience.Skills.Select(x => x.Name))</td>
+            </tr>
+        </table>
     }
 </table>

@@ -1,6 +1,5 @@
 html, body, .container {
     min-height: 100%;
-    height: 100%;
 }
 
 body{
@@ -21,24 +20,20 @@ body{
     margin: 0 auto;
 
     border: 1px solid #ccc;
-
-    display: flex;
 }
 
 .content {
-    width: 500px;
     padding: 5px; /* Поля вокруг текста */
 
     background-color: white;
 }
-    
+
 
 .sidebar {
-    width: 300px; /* Ширина */
     padding: 20px; /* Поля вокруг текста */
+    text-align: center;
 
     color: white;
-
     background-color: rgb(53, 53, 53);
 }
 

@@ -16,12 +16,9 @@ body{
     margin: 0 auto;
 
     border: 1px solid #ccc;
-
-    display: flex;
 }
 
 .content {
-    width: 500px;
     padding: 5px; /* Поля вокруг текста */
 
     background-color: grey;
@@ -29,8 +26,8 @@ body{
     
 
 .sidebar {
-    width: 300px; /* Ширина */
     padding: 20px; /* Поля вокруг текста */
+    text-align: center;
 
     color: white;
 
@@ -48,9 +45,4 @@ legend{
 
 p{
     margin: 0;
-}
-
-.info{
-    padding-top: 10px;
-    padding-bottom: 0;
 }
