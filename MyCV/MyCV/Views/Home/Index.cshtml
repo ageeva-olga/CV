@@ -3,69 +3,77 @@
     ViewBag.Title = "MyCV";
 }
 
-<aside class="sidebar">
-    @if (ViewBag.Mode == MyCV.Models.PageViewMode.EditPersonalInfo)
-    {
-        @Html.Partial("_EditPersonalInfo", Model.PersonalInfo)
-    }
-    else
-    {
-        @Html.Partial("_ViewPersonalInfo", Model.PersonalInfo)
-    }
-</aside>
-
-<main class="content">
-    <fieldset>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3><b>Education</b></h3>
+<main class="content" data-spy="scroll" data-target="#navbar">
+    <div class="container">
+        <fieldset id="personalInfo">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3><b>Personal Info</b></h3>
+                </div>
+                @if (ViewBag.Mode == MyCV.Models.PageViewMode.EditPersonalInfo)
+                {
+                    <a href="/?mode=Index">Завершить редактирование</a>
+                    @Html.Partial("_EditPersonalInfo", Model.PersonalInfo)
+                }
+                else
+                {
+                    <a href="/?mode=EditPersonalInfo">Редактировать</a>
+                    @Html.Partial("_ViewPersonalInfo", Model.PersonalInfo)
+                }
             </div>
-            @if (ViewBag.Mode == MyCV.Models.PageViewMode.EditEducation)
-            {
-                <a href="/?mode=Index">Завершить редактирование</a>
-                @Html.Partial("_EditEducation", Model.EducationBlock)
-            }
-            else
-            {
-                <a href="/?mode=EditEducation">Редактировать</a>
-                @Html.Partial("_ViewEducation", Model.EducationBlock)
-            }
-        </div>
-    </fieldset>
-
-    <fieldset>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3><b>Work Experience</b></h3>
+        </fieldset>
+        <fieldset id="education">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3><b>Education</b></h3>
+                </div>
+                @if (ViewBag.Mode == MyCV.Models.PageViewMode.EditEducation)
+                {
+                    <a href="/?mode=Index">Завершить редактирование</a>
+                    @Html.Partial("_EditEducation", Model.EducationBlock)
+                }
+                else
+                {
+                    <a href="/?mode=EditEducation">Редактировать</a>
+                    @Html.Partial("_ViewEducation", Model.EducationBlock)
+                }
             </div>
-            @if (ViewBag.Mode == MyCV.Models.PageViewMode.EditWorkExperience)
-            {
-                <a href="/?mode=Index">Завершить редактирование</a>
-                @Html.Partial("_EditWorkExperience", Model.WorkExperienceBlock)
-            }
-            else
-            {
-                <a href="/?mode=EditWorkExperience">Редактировать</a>
-                @Html.Partial("_ViewWorkExperience", Model.WorkExperienceBlock)
-            }
-        </div>
-    </fieldset>
+        </fieldset>
 
-    <fieldset id="profskills">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3><b>Professional skills</b></h3>
+        <fieldset id="workExperience">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3><b>Work Experience</b></h3>
+                </div>
+                @if (ViewBag.Mode == MyCV.Models.PageViewMode.EditWorkExperience)
+                {
+                    <a href="/?mode=Index">Завершить редактирование</a>
+                    @Html.Partial("_EditWorkExperience", Model.WorkExperienceBlock)
+                }
+                else
+                {
+                    <a href="/?mode=EditWorkExperience">Редактировать</a>
+                    @Html.Partial("_ViewWorkExperience", Model.WorkExperienceBlock)
+                }
             </div>
-            @if (ViewBag.Mode == MyCV.Models.PageViewMode.EditSkillCategory)
-            {
-                <a href="/?mode=Index">Завершить редактирование</a>
-                @Html.Partial("_EditSkillCategory", Model.SkillCategoryBlock)
-            }
-            else
-            {
-                <a href = "/?mode=EditSkillCategory">Редактировать</a>
-                @Html.Partial("_ViewSkillCategory", Model.SkillCategoryBlock)
-            }
-        </div>
-    </fieldset>
+        </fieldset>
+
+        <fieldset id="profskills">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3><b>Professional skills</b></h3>
+                </div>
+                @if (ViewBag.Mode == MyCV.Models.PageViewMode.EditSkillCategory)
+                {
+                    <a href="/?mode=Index">Завершить редактирование</a>
+                    @Html.Partial("_EditSkillCategory", Model.SkillCategoryBlock)
+                }
+                else
+                {
+                    <a href="/?mode=EditSkillCategory">Редактировать</a>
+                    @Html.Partial("_ViewSkillCategory", Model.SkillCategoryBlock)
+                }
+            </div>
+        </fieldset>
+    </div>
 </main>
