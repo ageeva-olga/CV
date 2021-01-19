@@ -1,8 +1,18 @@
 ﻿@model MyCV.Models.PersonalInfoViewModel
-<h1 class="title">@Model.FullName</h1>
-<h4 class="title info">Personal Info:</h4>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-xs-6">
+            <h2 class="title">@Model.FullName</h2>
+            <img src="~/Content/My_photo.jpg" alt="Photo" class="img-thumbnail">
+        </div>
 
-<h5 class="title info">Phone:</h5>
-<p>@Model.Phone</p>
-<h5 class="title info">e-mail:</h5>
-<p>@Model.Email</p>
+        <div class="col-md-6 col-xs-6">
+            <dl class="">
+                <dt>Phone:</dt>
+                <dd>@Model.Phone</dd>
+                <dt>E-mail:</dt>
+                <dd>@Model.Email</dd>
+            </dl>
+        </div>
+    </div>
+</div>
