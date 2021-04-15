@@ -1,10 +1,11 @@
 ﻿using System.Data.SQLite;
 using System;
 using MyCV.Logic.Models;
+using MyCV.Logic.Constracts;
 
 namespace MyCV.DAL
 {
-    public class PersonalInfoRepository: BaseRepository
+    public class PersonalInfoRepository: BaseRepository, IPersonalInfoRepository
     {
         public PersonalInfo GetPersonalInfo()
         {

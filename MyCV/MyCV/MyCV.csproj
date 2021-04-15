@@ -183,6 +183,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\BaseRepository.cs" />
     <Compile Include="DAL\EducationRepository.cs" />
+    <Compile Include="Logic\Contracts\IPersonalInfoRepository.cs" />
     <Compile Include="DAL\PersonalInfoRepository.cs" />
     <Compile Include="DAL\SkillsRepository.cs" />
     <Compile Include="DAL\WorkExperienceRepository.cs" />
@@ -264,6 +265,7 @@
     <Content Include="Views\Home\_ViewSkillCategory.cshtml" />
     <Content Include="Views\Home\_EditSkillCategory.cshtml" />
     <Content Include="Views\Home\_EditSkill.cshtml" />
+    <Content Include="Views\Home\_EditSkillExpirience.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

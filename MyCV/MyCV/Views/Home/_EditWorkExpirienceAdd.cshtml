@@ -1,19 +1,41 @@
 ﻿@model MyCV.Models.WorkExperienceViewModel
-<tr>
-    <td>
-        @Html.ValidationMessage("Begin", "", new { @class = "text-danger" })
-        <input type="text" name="Begin" class="form-control" placeholder="Год начала" value="@Model.Begin">
-        -
-        <input type="text" name="End" class="form-control" placeholder="Год окончания" value="@Model.End">
-        @Html.ValidationMessage("End", "", new { @class = "text-danger" })
-    </td>
-    <td>
-        <input type="text" name="WorkName" class="form-control" placeholder="Имя" value="@Model.WorkName">
-        @Html.ValidationMessage("WorkName", "", new { @class = "text-danger" })
-    </td>
-    <td>
-        <input type="text" name="PositionName" class="form-control" placeholder="Имя" value="@Model.PositionName">
-        @Html.ValidationMessage("PositionName", "", new { @class = "text-danger" })
-    </td>
-    <td><input type="submit" class="btn btn-success" value="Add" /></td>
-</tr>
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Дата начала</label>
+        <div class="col-sm-6">
+            @Html.ValidationMessage("Begin", "", new { @class = "text-danger" })
+            <input type="text" name="Begin" class="form-control" placeholder="Год начала" value="@Model.Begin">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Дата окончания</label>
+        <div class="col-sm-6">
+            <input type="text" name="End" class="form-control" placeholder="Год окончания" value="@Model.End">
+            @Html.ValidationMessage("End", "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Место работы</label>
+        <div class="col-sm-6">
+            <input type="text" name="WorkName" class="form-control" placeholder="Имя" value="@Model.WorkName">
+            @Html.ValidationMessage("WorkName", "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Должность</label>
+        <div class="col-sm-6">
+            <input type="text" name="PositionName" class="form-control" placeholder="Имя" value="@Model.PositionName">
+            @Html.ValidationMessage("PositionName", "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-6">
+            <input type="submit" class="btn btn-success" value="Add" />
+        </div>
+    </div>
+</div>
+ 

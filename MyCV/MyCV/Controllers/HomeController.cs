@@ -1,4 +1,5 @@
 ﻿using MyCV.DAL;
+using MyCV.Logic.Constracts;
 using MyCV.Logic.Models;
 using MyCV.Models;
 using System;
@@ -11,10 +12,11 @@ namespace MyCV.Controllers
 {
     public class HomeController : Controller
     {
-
+        IPersonalInfoRepository personalInfoRepository;
         public HomeController()
         {
             ViewBag.Mode = PageViewMode.View;
+            personalInfoRepository = new PersonalInfoRepository();
         }
 
         [HttpGet]
@@ -133,11 +135,10 @@ namespace MyCV.Controllers
         {
             if (ModelState.IsValid)
             {
-                var repo = new PersonalInfoRepository();
-                var personalInfo = repo.GetPersonalInfo();
+                var personalInfo = personalInfoRepository.GetPersonalInfo();
 
                 viewModel.FillModel(personalInfo);
-                repo.SavePersonalInfo(personalInfo);
+                personalInfoRepository.SavePersonalInfo(personalInfo);
 
                 return RedirectToAction("/");
             }

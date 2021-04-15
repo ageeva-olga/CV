@@ -1,21 +1,39 @@
 ﻿@model MyCV.Models.WorkExperienceListViewModel
-<form action="/Home/AddWorkExperience" method="post" role="form">
-    <table class="table table-striped">
-        @foreach (var workExperience in Model.WorkExperienceList)
-        {
-        <tr>
+<form class="form-horizontal" action="/Home/AddWorkExperience" method="post" role="form">
 
-            <td>@workExperience.Begin-@workExperience.End</td>
-            <td>@workExperience.WorkName</td>
-            <td>@workExperience.PositionName</td>
-            <td>@Html.Partial("_EditSkill", workExperience.Skills)</td>
-            <td><a href="/Home/DeleteWorkExperience?Id=@workExperience.Id" class="btn btn-danger">X</a></td>
-        </tr>
-        }
+    @foreach (var workExperience in Model.WorkExperienceList)
+    {
+        <table style="width:100%">
+            <tr>
+                <td>
+                    <dl class="row">
+                        <dt class="col-sm-3">Даты</dt>
+                        <dd class="col-sm-9">@workExperience.Begin-@workExperience.End</dd>
 
-        @Html.Partial("_EditWorkExpirienceAdd", Model.NewWorkExpirience)
+                        <dt class="col-sm-3">Место работы</dt>
+                        <dd class="col-sm-9">@workExperience.WorkName</dd>
 
-    </table>
+                        <dt class="col-sm-3">Должность</dt>
+                        <dd class="col-sm-9">@workExperience.PositionName</dd>
+
+                        <dt class="col-sm-3">Навыки</dt>
+                        <dd class="col-sm-9">@Html.Partial("_EditSkillExpirience", workExperience.Skills)</dd>
+
+                    </dl>
+                </td>
+                <td>
+                    <a href="/Home/DeleteWorkExperience?Id=@workExperience.Id" class="btn btn-danger">X</a>
+                </td>
+            </tr>
+        </table>
+
+
+
+    }
+
+    @Html.Partial("_EditWorkExpirienceAdd", Model.NewWorkExpirience)
+
+
 </form>
 
 
