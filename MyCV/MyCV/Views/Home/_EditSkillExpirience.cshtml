@@ -1,0 +1,7 @@
+﻿@model List<MyCV.Models.SkillViewModel>
+
+@foreach (var skill in Model)
+{
+    @skill.Name
+    <a href="/Home/@skill.DeleteCommand?Id=@skill.Id" class="btn btn-danger btn-xs">X</a>
+}
