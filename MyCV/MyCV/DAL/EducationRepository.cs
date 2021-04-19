@@ -1,4 +1,5 @@
-﻿using MyCV.Logic.Models;
+﻿using MyCV.Logic.Contracts;
+using MyCV.Logic.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -7,7 +8,7 @@ using System.Web;
 
 namespace MyCV.DAL
 {
-    public class EducationRepository : BaseRepository
+    public class EducationRepository : BaseRepository, IEducationRepository
     {
         public List<Education> GetEducations()
         {
