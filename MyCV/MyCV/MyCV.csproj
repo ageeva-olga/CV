@@ -183,6 +183,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\BaseRepository.cs" />
     <Compile Include="DAL\EducationRepository.cs" />
+    <Compile Include="Logic\Contracts\IEducationRepository.cs" />
     <Compile Include="Logic\Contracts\IPersonalInfoRepository.cs" />
     <Compile Include="DAL\PersonalInfoRepository.cs" />
     <Compile Include="DAL\SkillsRepository.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\Contracts\IWorkExperienceRepository.cs" />
     <Compile Include="Logic\Models\Education.cs" />
     <Compile Include="Logic\Models\PersonalInfo.cs" />
     <Compile Include="Logic\Models\Skill.cs" />
